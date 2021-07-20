@@ -30,13 +30,15 @@ Other Tiny ML google experiments from which TinyHeliShow builds its understandin
 - Linux, MacOS or Windows computer with [Chrome](https://www.google.com/chrome/?brand=WHAR&geo=US&gclid=Cj0KCQjw9_mDBhCGARIsAN3PaFNRBCVUxmhR1QPA2LHaoELEr9yc1KkSNQ-Jc9KVZd8Sq2ux5gR6mJsaAm_6EALw_wcB&gclsrc=aw.ds "Chrome") installed
 - TensorFlow Microcontroller Challenge Kit by Sparkfun or [Arduino Nano BLE Sense 33](https://store.arduino.cc/usa/nano-33-ble-sense "Arduino Nano")
 - [Micro USB](https://www.google.com/search?rlz=1C5CHFA_enUS858US858&sxsrf=ALeKk01CbJTvQbYgX6arJbsjcRVmv-3-RQ:1584929968297&q=Micro+USB+cable&spell=1&sa=X&ved=2ahUKEwjl8IOexK_oAhXDqZ4KHZ0mCmcQBSgAegQIDhAn&biw=1680&bih=832 "Micro USB") cable (If you're on a USB-C laptop, instead get a [USB-C to Micro USB](https://www.google.com/search?&q=USB-C+to+Micro+USB+cable "USB-C to Micro USB") cable)
-- Rubberband
-- Stick or wand
-- [Optional] Battery
+- Rubberband / Velcro
+- Stick, wand, or a toy Helicopter/Airplane model.
+- [Optional] Battery 
 
 ----
 
 ## Install and Run
+
+(The following descriptions are the same as applicable to the Google Tiny ML projects described above.)
 
 Flashing: Using the Arduino Nano Sense 33 BLE
 
