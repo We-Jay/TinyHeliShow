@@ -11,10 +11,10 @@ This project is built with:
 ----
 
 ## Experiment description
- [TinyHeliShow](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you play a puzzle game with a tiny ML gesture controller.
+ [TinyHeliShow](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you play a puzzle game with a tiny ML gesture controller. The game is a web based 3d game and has three levels of difficulty. 
  
 
-Other google experiments from which TinyHeliShow is inpired from are:
+Other Tiny ML google experiments from which TinyHeliShow builds its understanding of using microcroller based tiny ML models are:
 
 - [Air Snare](https://experiments.withgoogle.com/air-snare "Air Snare Google Experiment") lets you play the drums in the air.
 - [Finger User Interface](https://experiments.withgoogle.com/finger-user-interface "FUI Google Experiment") or FUI (pronounced Foo-ey) lets you control connected devices with the wave of a finger.
