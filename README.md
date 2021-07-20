@@ -4,6 +4,8 @@
 ## Overview
 **TinyHeliShow** is a puzzle game, which gives users a configuration of rings in 3d space and prompts users to guess a tiny heli manoeuvre that will solve the puzzle. 
 
+A screenshot of the game interface is shown [here:](/readme_images/port.png)
+
 This project is built with:
 - [THREEJS](https://threejs.org/ "three") and standard web technologies (HTML, CSS & Javascript) 
 - [TensorFlow Lite for Microcontrollers](https://www.tensorflow.org/lite/microcontrollers "TFL4M")
