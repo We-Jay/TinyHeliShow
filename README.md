@@ -1,26 +1,25 @@
 
-# Astrowand
+# TinyHeliShow
 
 ## Overview
+**TinyHeliShow** is a puzzle game, which gives users a configuration of rings in 3d space and prompts users to guess a tiny heli manoeuvre that will solve the puzzle. 
 
-Since 2009, coders have created thousands of experiments using Chrome, Android, AI, WebVR, AR and more. We showcase these projects and a variety of helpful tools and resources to inspire a diverse community of makers to explore, create, and share what’s possible with these technologies.
-
-**Astrowand** is a part of the TensorFlow Microcontroller Experiments, a collection of open source, interactive projects designed to demonstrate some fun ways to combine Arduino and TensorFlow Lite for Microcontrollers. 
-
-These projects were built with the 
-[Arduino Sense 33 BLE](https://store.arduino.cc/usa/nano-33-ble-sense "Arduino Store"), [TensorFlow Lite for Microcontrollers](https://www.tensorflow.org/lite/microcontrollers "TFL4M"), standard web technologies (HTML, CSS & Javascript ) and [THREEJS](https://threejs.org/ "three").
-
+This project is built with:
+- [THREEJS](https://threejs.org/ "three") and standard web technologies (HTML, CSS & Javascript) 
+- [TensorFlow Lite for Microcontrollers](https://www.tensorflow.org/lite/microcontrollers "TFL4M")
+- [Arduino Sense 33 BLE](https://store.arduino.cc/usa/nano-33-ble-sense "Arduino Store")  
 ----
 
 ## Experiment description
- [Astrowand](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you draw shapes in the sky to form constellations.
+ [TinyHeliShow](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you play a puzzle game with a tiny ML gesture controller. The game is a web based 3d game and has three levels of difficulty. 
+ 
 
-Other experiments to explore:
+Other Tiny ML google experiments from which TinyHeliShow builds its understanding of using microcroller based tiny ML models are:
 
 - [Air Snare](https://experiments.withgoogle.com/air-snare "Air Snare Google Experiment") lets you play the drums in the air.
 - [Finger User Interface](https://experiments.withgoogle.com/finger-user-interface "FUI Google Experiment") or FUI (pronounced Foo-ey) lets you control connected devices with the wave of a finger.
-- [Morning Mountain: Visual Alarm Clock](https://experiments.withgoogle.com/visual-alarm-clock "Morning Mountain Google Experiment") lets you stop your alarm clock from ringing by striking a pose.
 - [Tiny Motion Trainer](https://experiments.withgoogle.com/tiny-motion-trainer "Tiny Motion Trainer") lets you train and test IMU based TFLite models in the browser.
+- [Astrowand](https://experiments.withgoogle.com/astrowand "Astrowand") 
 
 ----
 
