@@ -91,7 +91,7 @@ function stop() {
 }
 
 
-export default{setupWorld, triggerShape, start, stop, scene, airPlane};
+export {setupWorld, triggerShape, start, stop, scene, airPlane};
 
 
 
