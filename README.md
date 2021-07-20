@@ -1,21 +1,18 @@
 
-# Astrowand
+# TinyHeliShow
 
 ## Overview
+**TinyHeliShow** is a puzzle game, which gives users a configuration of rings in 3d space and prompts users to guess a tiny heli manoeuvre that will solve the puzzle. 
 
-Since 2009, coders have created thousands of experiments using Chrome, Android, AI, WebVR, AR and more. We showcase these projects and a variety of helpful tools and resources to inspire a diverse community of makers to explore, create, and share what’s possible with these technologies.
-
-**Astrowand** is a part of the TensorFlow Microcontroller Experiments, a collection of open source, interactive projects designed to demonstrate some fun ways to combine Arduino and TensorFlow Lite for Microcontrollers. 
-
-These projects were built with the 
+These projects were built with:
 [Arduino Sense 33 BLE](https://store.arduino.cc/usa/nano-33-ble-sense "Arduino Store"), [TensorFlow Lite for Microcontrollers](https://www.tensorflow.org/lite/microcontrollers "TFL4M"), standard web technologies (HTML, CSS & Javascript ) and [THREEJS](https://threejs.org/ "three").
 
 ----
 
 ## Experiment description
- [Astrowand](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you draw shapes in the sky to form constellations.
-
-Other experiments to explore:
+ [TinyHeliShow](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you play a puzzle game with a tiny ML gesture controller.
+ 
+Other google experiments from which TinyHeliShow is inpired from are:
 
 - [Air Snare](https://experiments.withgoogle.com/air-snare "Air Snare Google Experiment") lets you play the drums in the air.
 - [Finger User Interface](https://experiments.withgoogle.com/finger-user-interface "FUI Google Experiment") or FUI (pronounced Foo-ey) lets you control connected devices with the wave of a finger.
