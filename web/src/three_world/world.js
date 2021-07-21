@@ -16,6 +16,8 @@ import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
 // import { FSM } from './systems/FSM.js';
 import { Plane } from 'three';
+//NewAdd
+import {setupGUI} from './components/gui.js';
 
 // These variables are module-scoped: we cannot access them
 // from outside the module
@@ -40,13 +42,16 @@ let airPlane;
 //let prevDisplayPath;
 // let ring;
 
-function setupWorld(container) {
+function setupWorld(container, fLevel, fPoints, bMistakes, mReplay, iStatus) {
 
     camera = createCamera();
     scene = createScene();
     renderer = createRenderer();
 
     container.append(renderer.domElement);
+    //NewAdd
+    setupGUI(fLevel, fPoints, bMistakes, mReplay, iStatus);    
+    
     resizer = new Resizer(container, camera, renderer);
     //Set rendering of the scenes @~60fps (or ~ every 16.67ms)
     loop = new Loop(camera, scene, renderer);
@@ -91,7 +96,8 @@ function stop() {
 }
 
 
-export {setupWorld, triggerShape, start, stop, scene, airPlane};
+export default {setupWorld, triggerShape, start, stop};
+export {scene, airPlane};
 
 
 
