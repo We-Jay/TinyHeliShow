@@ -23,7 +23,6 @@ Change Log:
 2. AstrowandPanel changed to TinyhelishowPanel
 -->
 <script>
-  
   import { onMount } from "svelte";
   import { onboardingStep, sounds } from "./store";
 
@@ -62,8 +61,5 @@ Change Log:
   {#if $onboardingStep >= 2}
     <TinyHelishowPanel />
   {/if}
-  <Nav />
+  <!--<Nav /> -->
 {/if}
-
-
-
