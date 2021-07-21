@@ -19,6 +19,7 @@ limitations under the License.
 -->
 <script>
   import { onMount } from "svelte";
+ // import { WebGLObjects} from "three";
 
   import { isConnected, onboardingStep } from "../store";
 
@@ -96,8 +97,8 @@ limitations under the License.
       }`}
     >
       <div class="sticky" bind:this={stickyEl}>
-        <h1>Tiny Helishow</h1>
-        <h2>Play a game puzzle using your mock-copter. </h2>
+        <h1>Tiny <br> Heli-Show</h1>
+        <h2>Play a 3d-game puzzle using your mock helicopter. </h2>
       </div>
     </header>
     <div class="scroll-container">
@@ -145,18 +146,39 @@ limitations under the License.
       {#if $onboardingStep >= 1}
         <section class="instructions" bind:this={instructionSectionEl}>
           <div class="row">
-            <h3>Play</h3>
+            <h3>Play setup</h3>
             <p>
               Using an elastic band, or piece of velcro, attach the board to the
-              top of a wand-like stick that is about 2ft long. Make sure the LED
-              is facing upwards and hold the USB cable in your hand, making sure
+              top of a wand-like stick (about 2ft long or strech you arm forward). 
+              You may also attach the board to a mock/minature helicopter or airplane model. 
+              Make sure the LED is facing upwards and hold the USB cable in your hand, making sure
               the USB/board connector is towards your wrist.
             </p>
             <br />
+            <h3>Game Play</h3>
             <p>
-              Now get ready to draw your heli-formations. There are three
-              gestures to begin with: square(alpha), circle(beta)), triangle(gamma).
+              Get ready to draw out your heli-formations. There are three manoeuvres and corresponding control
+              gestures to begin with:
             </p>
+              <table >
+                <tr>
+                  <th>Heli Manoeuvre</th>
+                  <th>Tiny Heli Gesture</th>
+                </tr>
+                <tr>
+                  <td>GLOBE</td>
+                  <td>Circle</td>
+                </tr>
+                <tr>
+                  <td>FORTRESS</td>
+                  <td>Square</td>
+                </tr>
+                <tr>
+                  <td>TORNADO</td>
+                  <td>Triangle</td>
+                </tr>     
+              </table>
+          
           </div>
           <div class="row instruction-gif-row">
             <img
@@ -178,15 +200,19 @@ limitations under the License.
             <br />
           </div>
           <p>
-            Draw a shape to see it appears as manoeuvre for the TinyHelicopter and also if the manoeuvre solves the puzzle.
-          </p>
-          <br/>
-          <p>Lastly,
-            a couple of tips for accuracy - point the wand away from you and draw the shapes relatively quickly,
-            and not too large.
+            When prompted to solve the puzzle, figure out the manoeuvre that will provide coverage to all the rings. Then 
+            draw out the corresponding Tiny Heli control gesture. The Tiny Helicopter will execute the manoeuvre in the game. 
+            See if your manoeuvre solves the puzzle.
+            The game will have three levels of difficulty. 
+            You can make a maximum of 3 mistakes at any level. 
+            If you clear all levels, you become the "The Tiny Heli Master"! 
+            That is an honour!
+
+          
           </p>
           <br />
           <br />
+
           <div class="row" class:inverted={$onboardingStep === 1}>
             <button on:click={handleLetsGo}>
               {#if $onboardingStep === 1}
@@ -196,6 +222,12 @@ limitations under the License.
               {/if}
             </button>
           </div>
+
+          <p> Couple of tips for accuracy - point the wand/helicopter-model away from you and draw the shapes relatively quickly,
+            and not too large. Please Note: At present, the Tiny Heli Gestures are based on the Google Tiny ML Experiments: Astrowand project set. 
+            More Heli Manoeuvres and Tiny Heli gestures will be added to the game subsequently.
+
+
         </section>
       {/if}
     </div>
