@@ -124,7 +124,7 @@ limitations under the License.
           
           <br />
           <p>
-            Open the tinyhelishow folder and double click on tinyhelishow.ino
+            Open the arduino/tinyhelishow folder and double click on tinyhelishow.ino
             file. The file will open in your Arduino IDE window. Check you are
             connected to the correct board and upload your file using the
             'right-pointing' arrow in the top left corner of the window. Upload
@@ -146,7 +146,7 @@ limitations under the License.
 
           <h4>Connect via Bluetooth</h4>
           <p>
-            Click the "connect" button below, then select "Tiny Heli Show" from the
+            Click the "connect" button below, then select "TinyHeliShow" from the
             dialogue box.
           </p>
         </div>
