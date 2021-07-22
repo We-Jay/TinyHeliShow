@@ -15,7 +15,7 @@ This project is built with:
 ## Experiment description
  [TinyHeliShow](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you play a puzzle game with a tiny ML gesture controller. The game is a web based 3d game and has three levels of difficulty. 
  
-The Tiny Heli gesture controller can be easiy rigged up using a toy or a mock helicopter/airplane. ![Mock TinyML HeliCopter](/readme_images/mock-tinyml-copter.png)
+The Tiny Heli gesture controller can be easiy rigged up using a toy or a mock helicopter/airplane. ![Mock TinyML HeliCopter](/readme_images/mock-tinyml-copter.jpg)
  
 
 
