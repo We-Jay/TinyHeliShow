@@ -96,22 +96,35 @@ limitations under the License.
     >
       <div class="sticky" bind:this={stickyEl}>
         <h1>Tiny <br> Heli-Show</h1>
-        <h2>Play a 3d-game puzzle using your mock helicopter. </h2>
+        <h2>Play a 3d puzzle game using your tiny helicopter. </h2>
       </div>
     </header>
     <div class="scroll-container">
       <section bind:this={topSectionEl}>
         <div class="row">
           <h3>Getting Started</h3>
+          
+          <!--
           <p>
             Download and unzip this <a
-              href="./astrowand-arduino-sketch-v002.zip"
+               href="./astrowand-arduino-sketch-v002.zip"
               target="_blank">sketch file</a
             >.
           </p>
+          -->
+
+          <p>
+            Download and unzip this <a
+              
+              href="./tinyhelishow-arduino-sketch-v001.zip"
+              target="_blank">sketch file</a
+            >.
+          </p>
+          
+          
           <br />
           <p>
-            Open the arduino/tinyhelishow folder and double click on tinyhelishow.ino
+            Open the tinyhelishow folder and double click on tinyhelishow.ino
             file. The file will open in your Arduino IDE window. Check you are
             connected to the correct board and upload your file using the
             'right-pointing' arrow in the top left corner of the window. Upload

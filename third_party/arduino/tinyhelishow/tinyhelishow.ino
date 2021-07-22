@@ -9,6 +9,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
+// Modification of Connecting BLE device name by Vikram Jamwal
 
 #include <Arduino_LSM9DS1.h>
 #include <ArduinoBLE.h>
@@ -524,7 +525,9 @@ void setup() {
 
   address.toUpperCase();
 
-  name = "Astrowand-";
+  //Modify
+  //name = "Astrowand-";
+  name = "TinyHeliShow-";
   name += address[address.length() - 5];
   name += address[address.length() - 4];
   name += address[address.length() - 2];
