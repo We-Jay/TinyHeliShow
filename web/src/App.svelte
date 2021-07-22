@@ -15,7 +15,7 @@ limitations under the License.
 ========================================================================
 
 @author Rikard Lindstrom <rlindstrom@google.com>
-@author Vikram Jamwal <vikram.jamwal@gmail.com>
+@Modified by Vikram Jamwal <vikram.jamwal@gmail.com>
 
 Change Log: 
 1. import AstrowandPanel from "./components/AstrowandPanel.svelte"; to TinyhelishowPanel
@@ -61,5 +61,5 @@ Change Log:
   {#if $onboardingStep >= 2}
     <TinyHelishowPanel />
   {/if}
-  <!--<Nav /> -->
+  <Nav />
 {/if}

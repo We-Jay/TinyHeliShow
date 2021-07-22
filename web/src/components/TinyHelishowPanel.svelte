@@ -31,8 +31,8 @@ Change Log:
     let containerEl; //might not need this
     let panelEl;
 
-    let level;
-    let points;
+    let levelValue;
+    let pointsValue;
     let mistakesBar;
     let replayMessage;
     let info;
@@ -72,7 +72,7 @@ Change Log:
 
     onMount(async () => {
         document.addEventListener("keydown", handleDocKeyDown, false);
-        world.setupWorld(panelEl,level,points, mistakesBar,replayMessage, info);
+        world.setupWorld(panelEl,levelValue, pointsValue, mistakesBar,replayMessage, info);
         // start the animation loop
         world.start();
         return () => {
@@ -89,16 +89,16 @@ Change Log:
 </div>
 -->
 
+
 <div class="game-holder" id="gameHolder">
     <div class="header">
         <h1><span>JBMJ!</span>TinyHeliShow</h1>
         <h2>make your manoeuvre</h2>
         <!--  -->
         <div class="score" id="score">
-            <div class="score__content" bind:this={level}>
-                <!--  id="level">   -->
+            <div class="score__content" id="level"> 
                 <div class="score__label">level</div>
-                <div class="score__value score__value--level" id="levelValue">
+                <div class="score__value score__value--level" bind:this={levelValue}> <!--   id="levelValue"> -->  
                     1
                 </div>
                 <svg
@@ -127,10 +127,9 @@ Change Log:
                     />
                 </svg>
             </div>
-            <div class="score__content" bind:this={points}>
-                <!-- id="points">-->
+            <div class="score__content" id="points">             
                 <div class="score__label">points</div>
-                <div class="score__value score__value--points" id="pointsValue">
+                <div class="score__value score__value--points" bind:this={pointsValue}>     <!--  id="pointsValue"> -->
                     000
                 </div>
             </div>
@@ -148,8 +147,9 @@ Change Log:
         </div>
     </div>
 
-    <div class="world" bind:this={panelEl} />
-    --> <!--id="world"-->
+    <div class="world" bind:this={panelEl}> </div>
+    <!--<div class="world" bind:this={panelEl} />-->
+     <!--id="world"-->
 
     <div class="message message--replay" bind:this={replayMessage}>
         Your Move
@@ -190,10 +190,17 @@ Change Log:
     }
 </style>
 -->
-<style lang="scss" >
+<style >
 
     @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic');
 
+    .game-holder {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: -webkit-linear-gradient(#e4e0ba, #f7d9aa);
+	background: linear-gradient(#e4e0ba, #f7d9aa);
+}
     .world {
         position: absolute;
         overflow: hidden;

@@ -19,8 +19,6 @@ limitations under the License.
 -->
 <script>
   import { onMount } from "svelte";
- // import { WebGLObjects} from "three";
-
   import { isConnected, onboardingStep } from "../store";
 
   import ConnectButton from "./ConnectButton.svelte";
@@ -160,6 +158,8 @@ limitations under the License.
               Get ready to draw out your heli-formations. There are three manoeuvres and corresponding control
               gestures to begin with:
             </p>
+            <p>
+              <font size="2" face="RobotoMono" ></font>
               <table >
                 <tr>
                   <th>Heli Manoeuvre</th>
@@ -178,6 +178,7 @@ limitations under the License.
                   <td>Triangle</td>
                 </tr>     
               </table>
+            
           
           </div>
           <div class="row instruction-gif-row">
@@ -207,8 +208,6 @@ limitations under the License.
             You can make a maximum of 3 mistakes at any level. 
             If you clear all levels, you become the "The Tiny Heli Master"! 
             That is an honour!
-
-          
           </p>
           <br />
           <br />
@@ -223,9 +222,11 @@ limitations under the License.
             </button>
           </div>
 
-          <p> Couple of tips for accuracy - point the wand/helicopter-model away from you and draw the shapes relatively quickly,
-            and not too large. Please Note: At present, the Tiny Heli Gestures are based on the Google Tiny ML Experiments: Astrowand project set. 
-            More Heli Manoeuvres and Tiny Heli gestures will be added to the game subsequently.
+          <p> Couple of tips: (1) For accuracy - point the wand/helicopter-model away from you and draw the shapes relatively quickly,
+            and not too large. (2) Adjust the orientation and zoom of the play area to your taste. </p>
+            
+          <p> Please Note: At present, the Tiny Heli gestures are based on the Google TinyML Experiments:Astrowand project set. 
+            More or different Heli Manoeuvres and Tiny Heli gesture sets can be easily added to the game. </p>
 
 
         </section>

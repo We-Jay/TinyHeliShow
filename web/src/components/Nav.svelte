@@ -15,6 +15,7 @@ limitations under the License.
 ========================================================================
 
 @autor Rikard Lindstrom <rlindstrom@google.com>
+@author Vikram Jamwal (modified the astrowand panel)
 
 -->
 <script>
@@ -30,8 +31,10 @@ limitations under the License.
       a.classList.remove("invert");
     }
   }
+
   function handleScroll(e) {
-    const astrowandPanel = document.getElementById("astrowandPanel");
+    //const astrowandPanel = document.getElementById("astrowandPanel");
+    const astrowandPanel = document.getElementById("gameHolder");
     if (astrowandPanel) {
       const panelTop = astrowandPanel.getBoundingClientRect().top;
       links.forEach((a) => {
@@ -50,18 +53,33 @@ limitations under the License.
 
 <div class="nav">
   <div class="row">
+    <!--
     <a
       bind:this={links[0]}
       href="https://experiments.withgoogle.com/collection/tfliteformicrocontrollers"
       target="_blank">About</a
     >
+    -->
+    <a
+      bind:this={links[0]}
+      href="https://experiments.withgoogle.com/collection/tfliteformicrocontrollers"
+      target="_blank"
+    />
   </div>
   <div class="row">
+    <!--
     <a
       bind:this={links[1]}
       href="https://github.com/googlecreativelab/tf4micro-motion-kit/blob/main/FAQ.md"
       target="_blank">FAQ</a
     >
+    -->
+
+    <a
+      bind:this={links[1]}
+      href="https://github.com/googlecreativelab/tf4micro-motion-kit/blob/main/FAQ.md"
+      target="_blank"
+    />
   </div>
 </div>
 

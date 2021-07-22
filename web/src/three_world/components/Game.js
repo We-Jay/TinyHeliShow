@@ -20,7 +20,7 @@ class Game {
         //this.fsm = new FSM(loop);
         this.loop = loop;
         this.sceneKeeper = new SceneKeeper();
-        this.replayMessage = "Make Manoeuvre: Globe:O, Fortress:[], Tornado: &#92\/ !"
+        this.replayMessage = "Manoeuvres: Globe ◯, Fortress □, Tornado △"
     }
 
 
