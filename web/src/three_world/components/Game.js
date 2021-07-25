@@ -1,8 +1,9 @@
-import { scene, airPlane } from "../world.js";
-import { createAirPlane, setupManoeuvre } from './airplane.js';
-import { fetchPointsPath, fetchDisplayPath } from './path.js';
+import { scene, heliCopter } from "../world.js";
+import { createHeliCopter, setupManoeuvre } from './helicopter.js';
+import { fetchCurvePath, fetchFullCurvePath } from './path.js';
 import { createRing, createRingsArray } from './ring.js';
 import { SceneKeeper } from '../systems/SceneKeeper.js';
+import { createCube } from "./cube.js";
 import * as GUI from "./gui.js";
 
 class Game {
@@ -36,7 +37,7 @@ class Game {
             }
         } else if (this.level == 2) {
             console.log("Updated Score", this.level);
-            switch (this.attempt) {        
+            switch (this.attempt) {
                 case 1: { this.points += 200; break; }
                 case 2: { this.points += 100; break; }
                 case 3: { this.points += 50; break; }
@@ -107,8 +108,14 @@ class Game {
     handlePostMove() {
         //Stop plane movement
         this.loop.updatables.pop();
-        //Clear the scene
-        this.sceneKeeper.removeAll(scene);
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+
+        //Clear the scene (No clearing if misktake)
+        //this.sceneKeeper.removeAll(scene);
 
         //if successfull move
         console.log("CurrentMove:", this.currentMove, ",CurrentPuzzle", this.puzzle);
@@ -117,24 +124,44 @@ class Game {
             this.updateLevel();
             if (this.finished) {
                 this.replayMessage = "Congrat! You are now a TinyHeli-Master!";
+                // You can add a timeout here and then clear the scene
+                //Clear the scene
+                sleep(10000).then(() => { console.log("World!"); });
+                //setTimeout(function(){}, 5000);
+                this.sceneKeeper.removeAll(scene);
                 this.updateGUI();
-                console.log(this.replayMessage, "Level-Score;", this.level,"-", this.points);
+                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
             }
             else {
                 if (this.levelChanged) {
-                    this.replayMessage = "Congrats! Try Next Level Puzzle!";
+                    this.replayMessage = "Congrats! Try Next Level Puzzle: Globe ◯, Fortress □, Tornado △";
+                    // You can add a timeout here and then clear the scene
+                    //Clear the scene
+                    sleep(10000).then(() => { console.log("World!"); });
+                    // setTimeout(function(){ }, 5000);
+                    this.sceneKeeper.removeAll(scene);
                     this.updateGUI();
-                    console.log(this.replayMessage, "Level-Score;", this.level,"-", this.points);
+
+                    console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
                     this.levelChanged = false;
                     this.setupPuzzle(this.level);
                     this.setState("waiting-for-move");
+                    this.updateGUI();
+
 
                 } else {
-                    this.replayMessage = "Congrats! Try Next Puzzle!";
+                    this.replayMessage = "Congrats! Try Next Puzzle: Globe ◯, Fortress □, Tornado △";
+                    // You can add a timeout here and then clear the scene
+                    //Clear the scene
+                    sleep(10000).then(() => { console.log("World!"); });
+                    // setTimeout(function(){ }, 5000);
+                    this.sceneKeeper.removeAll(scene);
                     this.updateGUI();
-                    console.log(this.replayMessage, "Level-Score;", this.level,"-", this.points);
+
+                    console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
                     this.setupPuzzle(this.level);
                     this.setState("waiting-for-move");
+                    this.updateGUI();
                 }
 
             }
@@ -143,15 +170,30 @@ class Game {
             this.mistakes += 1;
             if (this.mistakes > 3) {
                 this.replayMessage = "Sorry, Game Over!";
-                console.log(this.replayMessage, "Level-Score;", this.level,"-", this.points);
+                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
+
+                // You can add a timeout here and then clear the scene
+                //Clear the scene
+                sleep(10000).then(() => { console.log("World!"); });
+                //setTimeout(function(){}, 5000);
+                this.sceneKeeper.removeAll(scene);
+
                 this.updateGUI();
             }
             else {
-                this.replayMessage = "Sorry, Wrong move: Try Again!"
+                this.replayMessage = "Sorry, Wrong move: Try Again: Globe ◯, Fortress □, Tornado △"
+                // You can add a timeout here and then clear the scene
+                //Clear the path in the scene
+                sleep(10000).then(() => { console.log("World!"); });
+                //setTimeout(function(){ }, 5000);
+                //Only remove the previous path
+                this.sceneKeeper.removeLast(scene);
+
                 this.updateGUI();
-                console.log(this.replayMessage, "Level-Score;", this.level,"-", this.points);
-                this.setupPuzzle(this.level);
-                this.setState ("waiting-for-move", "Level-Score;", this.level,"-", this.points);
+                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
+                // this.setupPuzzle(this.level);
+                this.setState("waiting-for-move", "Level-Score;", this.level, "-", this.points);
+                this.updateGUI();
 
             }
 
@@ -206,8 +248,8 @@ class Game {
         //Choose a random path out of all possible manoeuvre configurations 
         const pathType = Math.floor(Math.random() * 3) + 1; //Random number between 1 and 3
         this.setPuzzleType(pathType);
-        let pointsPath = fetchPointsPath(pathType);
-        let displayPath = fetchDisplayPath(pathType);
+        let curvePath = fetchCurvePath(pathType);
+        //let displayPath = fetchDisplayPath(pathType);
 
         //(Optional) Display puzzle path
         //scene.add(displayPath);
@@ -228,7 +270,7 @@ class Game {
                 break;
         }
 
-        const ringsArray = createRingsArray(pointsPath, noOfRings);
+        const ringsArray = createRingsArray(curvePath, noOfRings);
         for (let i = 0; i < ringsArray.length; i++) {
             scene.add(ringsArray[i]);
             this.sceneKeeper.add(ringsArray[i]);
@@ -240,24 +282,24 @@ class Game {
 
     makeMove(shape) {
         this.setState("making-move");
-        let pointsPath;
+        let curvePath;
         let displayPath;
         switch (shape) {
             case "circle":
-                pointsPath = fetchPointsPath(1);
-                displayPath = fetchDisplayPath(1);
+                curvePath = fetchFullCurvePath(1);
+                //displayPath = fetchDisplayPath(1);
                 this.currentMove = "GLOBE"
                 console.log("GLOBE");
                 break;
             case "square":
-                pointsPath = fetchPointsPath(2);
-                displayPath = fetchDisplayPath(2);
+                curvePath = fetchFullCurvePath(2);
+                //displayPath = fetchDisplayPath(2);
                 this.currentMove = "FORTRESS";
                 console.log("FORTRESS");
                 break;
             case "triangle":
-                pointsPath = fetchPointsPath(3);
-                displayPath = fetchDisplayPath(3);
+                curvePath = fetchFullCurvePath(3);
+                //displayPath = fetchDisplayPath(3);
                 this.currentMove = "TORNADO";
                 console.log("TORNADO");
                 break;
@@ -272,17 +314,21 @@ class Game {
                 stopGame();
                 break;
             default:
-               pointsPath = fetchPointsPath1(...);
+               curvePath = fetchCurvePath1(...);
             */
         }
         // console.log("Reached upto monoeuvre");
-        this.replayMessage = "Move:" + this.currentMove;
+        this.replayMessage = "Your Move:" + this.currentMove;
         this.updateGUI();
-        setupManoeuvre(this, pointsPath);
-        scene.add(displayPath);
-        this.sceneKeeper.add(displayPath);
+        //flytoMove
+        setupManoeuvre(this, scene, this.sceneKeeper, curvePath);
+        //flyoutMove
+        //New Add
+        // scene.add(createCube());
+        //scene.add(displayPath);
+        //this.sceneKeeper.add(displayPath);
         //execute manoeuvre with clock-tick
-        this.loop.updatables.push(airPlane);
+        this.loop.updatables.push(heliCopter);
     }
 
     updateGUI() {

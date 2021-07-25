@@ -92,7 +92,8 @@ function createRingsArray(pointsPath, noOfPoints) {
         var pointsArrayLen = points.length;
         // console.log(pointsArrayLen);
 
-        var min = 0
+        //setting min so that there is not point just very near the origin.
+        var min = 10;
         var max = Math.floor(pointsArrayLen / noOfPoints);
         var increment = Math.floor(pointsArrayLen / noOfPoints);
 

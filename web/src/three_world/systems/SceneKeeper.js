@@ -8,6 +8,10 @@ class SceneKeeper {
          this.gameLevelObjs.push(object3D);
     }
 
+    removeLast(scene){
+        scene.remove(this.gameLevelObjs.pop());
+    }
+
     removeAll(scene){
         //for (let i=this.gameLevelObjs.length-1; i>=0, i--;) {
         //    scene.remove(this.gameLevelObjs[i]);

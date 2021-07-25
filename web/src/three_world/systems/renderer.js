@@ -6,6 +6,8 @@ function createRenderer() {
     // turn on the physically correct lighting model
     renderer.physicallyCorrectLights = true;
 
+    renderer.clearDepth();
+
     return renderer;
 }
 

@@ -1,4 +1,6 @@
 import { Clock } from 'three'; // '/node_modules/three/build/three.module.js';
+import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
+import {update, updateControls} from "./controls";
 
 const clock = new Clock();
 
@@ -17,6 +19,9 @@ class Loop {
         // console.log(
         //     `The last frame rendered in ${delta * 1000} milliseconds`,
         // );
+        
+        //NewAdd
+        updateControls();
 
         // All world objects that need updation are listed in the "updatables"
         for (const object of this.updatables) {

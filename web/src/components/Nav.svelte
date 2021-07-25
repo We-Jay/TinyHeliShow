@@ -53,33 +53,21 @@ limitations under the License.
 
 <div class="nav">
   <div class="row">
-    <!--
+    <!--About-->
     <a
       bind:this={links[0]}
       href="https://experiments.withgoogle.com/collection/tfliteformicrocontrollers"
-      target="_blank">About</a
-    >
-    -->
-    <a
-      bind:this={links[0]}
-      href="https://experiments.withgoogle.com/collection/tfliteformicrocontrollers"
-      target="_blank"
-    />
+      target="_blank"> </a>
+  
   </div>
   <div class="row">
-    <!--
-    <a
-      bind:this={links[1]}
-      href="https://github.com/googlecreativelab/tf4micro-motion-kit/blob/main/FAQ.md"
-      target="_blank">FAQ</a
-    >
-    -->
+    <!--FAQ -->
 
     <a
       bind:this={links[1]}
       href="https://github.com/googlecreativelab/tf4micro-motion-kit/blob/main/FAQ.md"
-      target="_blank"
-    />
+      target="_blank"> </a>
+    
   </div>
 </div>
 

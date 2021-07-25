@@ -6,10 +6,17 @@
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
+let controls;
+
 function createControls(camera, canvas) {
-    const controls = new OrbitControls(camera, canvas);
+    controls = new OrbitControls(camera, canvas);
+    controls.autoRotate = true;
     return controls;
 }
 
-export { createControls };
+function updateControls(){
+    controls.update();
+}
+
+export { createControls, updateControls };
         

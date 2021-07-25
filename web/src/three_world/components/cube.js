@@ -17,6 +17,8 @@ function createCube() {
     
     //initial orientation
     cube.rotation.set(-0.5, -0.1, 0.8);
+    cube.translateX(5);
+    
 
     const radiansPerSecond = MathUtils.degToRad(30);
 
