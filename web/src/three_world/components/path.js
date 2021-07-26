@@ -539,7 +539,7 @@ function createCurvePath3() {
 
 
 
-export { fetchCurvePath, createPathPoints, fetchFullCurvePath, createPartialDisplayPath };
+export { fetchCurvePath, createDisplayPath, createPathPoints, fetchFullCurvePath, createPartialDisplayPath };
 
 //call this during World Setup
 /*

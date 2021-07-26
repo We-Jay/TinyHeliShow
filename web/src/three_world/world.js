@@ -1,10 +1,10 @@
 import { createCamera } from './components/camera.js';
-import { createCube } from './components/cube.js';
+import { createCube, createMarkerCubes } from './components/cube.js';
 import { createArrow } from './components/arrow.js';
 import { createLights, createLights2 } from './components/lights.js';
 import { createScene } from './components/scene.js';
 import { Game } from './components/Game.js';
-import { fetchCurvePath, fetchDisplayPath } from './components/path.js';
+import { fetchCurvePath, createDisplayPath } from './components/path.js';
 import { createHeliCopter, setupManoeuvre } from './components/helicopter.js';
 import { createRing, createRingsArray } from './components/ring.js';
 import { SceneKeeper } from './systems/SceneKeeper.js';
@@ -78,11 +78,11 @@ function setupWorld(container, fLevel, fPoints, bMistakes, mReplay, iStatus) {
     plane.rotateX(Math.PI/2);
     scene.add(plane);
 
-    // const line = createFatLine();
-    // scene.add(line);
-
-
-
+    const directionCubes = createMarkerCubes();
+    for (let i = 0, l=directionCubes.length; i<l; i++){
+        scene.add(directionCubes[i]);
+        console.log("Added", i);
+    }
 
 
     //Game elements (Resuable)
@@ -111,13 +111,13 @@ function triggerShape(shape) {
 
 
 function stop() {
-    game.stopGame();s
+    game.stopGame();
 }
 
 //ONLY CHANGE required in this and integrated version: Toggle next two lines
 export default {setupWorld, triggerShape, start, stop};
 
-export {scene, heliCopter};
+export {scene, heliCopter };
 
 //export {scene, heliCopter};
 

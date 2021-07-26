@@ -1,8 +1,10 @@
 // import * as THREE from '/node_modules/three/build/three.module.js';
 import * as THREE from 'three';
+import { RingBufferGeometry } from 'three';
 //import {scene} from '../World';
 import { Loop } from '../systems/Loop'
 import { createPartialDisplayPath } from "./path";
+import { createHeliRing } from './ring';
 
 var Colors = {
     //red: 0xf25346,
@@ -19,6 +21,7 @@ var Colors = {
     yellow: 0xFDCA40,
 };
 
+
 let heliCopter;
 let rotor;
 //let myScene = scene;
@@ -31,6 +34,17 @@ let rotor;
 function createHeliCopter(loop) {
 
     const mesh = new THREE.Object3D();
+
+/*
+    //To be removed
+    const heliRingGeometry = createHeliRing();
+    const heliRingMaterial = new THREE.MeshPhongMaterial({ color: Math.random() * 0xffffff });
+    heliRingMaterial.flatShading = true;
+    const heliRing = new THREE.Mesh(heliRingGeometry, heliRingMaterial);
+    heliRing.rotateY(-Math.PI/2);
+    mesh.add(heliRing);
+*/
+
 
     // Create the Tail Boom
     var geomTailBoom = new THREE.CylinderGeometry( 2.5, 1, 8, 32 );
@@ -75,6 +89,7 @@ function createHeliCopter(loop) {
     mesh.add(sideWing);
     */
 
+
     // rotor
     var geomRotor = new THREE.BoxGeometry(2, 1, 1, 1, 1, 1);
     var matRotor = new THREE.MeshPhongMaterial({ color: Colors.maroon }); //, shading:THREE.FlatShading});
@@ -106,6 +121,7 @@ function createHeliCopter(loop) {
     mesh.scale.set(.06, .06, .06);
 
     heliCopter = mesh;
+
 
 
     /*
@@ -187,7 +203,7 @@ function setupManoeuvre(game, gameScene, gameSceneKeeper, curvePath) {
         // renderer.render(scene, camera);
         // fraction += 0.001;
         if (fraction < 1) {
-            fraction += delta / 20;
+            fraction += delta / 25;
 
             //console.log(displayPath);
             if (typeof gameScene === "undefined") {
