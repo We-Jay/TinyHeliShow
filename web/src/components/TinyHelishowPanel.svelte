@@ -26,7 +26,6 @@ Change Log:
     import soundManager from "../soundManager";
     import world from "../three_world/world";
     import StrokeCanvas from "./StrokeCanvas.svelte";
-    
 
     let containerEl; //might not need this
     let panelEl;
@@ -72,7 +71,14 @@ Change Log:
 
     onMount(async () => {
         document.addEventListener("keydown", handleDocKeyDown, false);
-        world.setupWorld(panelEl,levelValue, pointsValue, mistakesBar,replayMessage, info);
+        world.setupWorld(
+            panelEl,
+            levelValue,
+            pointsValue,
+            mistakesBar,
+            replayMessage,
+            info
+        );
         // start the animation loop
         world.start();
         return () => {
@@ -89,47 +95,30 @@ Change Log:
 </div>
 -->
 
-
 <div class="game-holder" id="gameHolder">
     <div class="header">
         <h1><span>JBMJ!</span>TinyHeliShow</h1>
         <h2>make your manoeuvre</h2>
         <!--  -->
         <div class="score" id="score">
-            <div class="score__content" id="level"> 
+            <div class="score__content" id="level">
                 <div class="score__label">level</div>
-                <div class="score__value score__value--level" bind:this={levelValue}> <!--   id="levelValue"> -->  
+                <div
+                    class="score__value score__value--level"
+                    bind:this={levelValue}
+                >
+                    <!--   id="levelValue"> -->
                     1
                 </div>
-                <svg
-                    class="level-circle"
-                    id="levelCircle"
-                    viewbox="0 0 200 200"
-                >
-                    <circle
-                        id="levelCircleBgr"
-                        r="80"
-                        cx="100"
-                        cy="100"
-                        fill="none"
-                        stroke="#d1b790"
-                        stroke-width="24px"
-                    />
-                    <circle
-                        id="levelCircleStroke"
-                        r="80"
-                        cx="100"
-                        cy="100"
-                        fill="none"
-                        stroke="#68c3c0"
-                        stroke-width="14px"
-                        stroke-dasharray="502"
-                    />
-                </svg>
+                
             </div>
-            <div class="score__content" id="points">             
+            <div class="score__content" id="points">
                 <div class="score__label">points</div>
-                <div class="score__value score__value--points" bind:this={pointsValue}>     <!--  id="pointsValue"> -->
+                <div
+                    class="score__value score__value--points"
+                    bind:this={pointsValue}
+                >
+                    <!--  id="pointsValue"> -->
                     000
                 </div>
             </div>
@@ -147,9 +136,9 @@ Change Log:
         </div>
     </div>
 
-    <div class="world" bind:this={panelEl}> </div>
+    <div class="world" bind:this={panelEl} />
     <!--<div class="world" bind:this={panelEl} />-->
-     <!--id="world"-->
+    <!--id="world"-->
 
     <div class="message message--replay" bind:this={replayMessage}>
         Your Move
@@ -190,17 +179,32 @@ Change Log:
     }
 </style>
 -->
-<style >
+<style>
 
-    @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    :root {
+        /* Palette */
+        --black-color: #000000;
+        --blue-color: #13f4ef; /*#13F4EF*/
+        --green-color: #86ff00; /*#86FF00;*/
+        --red-color: #ff005c; /*#FF005C*/
+        --yellow-color: #ffe596; /*FFBF00 */
+        --cream-color: #d1b790;
+    }
 
     .game-holder {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: -webkit-linear-gradient(#e4e0ba, #f7d9aa);
-	background: linear-gradient(#e4e0ba, #f7d9aa);
-}
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--black-color);
+    }
+
     .world {
         position: absolute;
         overflow: hidden;
@@ -211,7 +215,7 @@ Change Log:
     .header {
         position: absolute;
         top: 2vh; /* Mod: 8 to 2 */
-        left: 0;
+        left: 2em;
         width: 100%;
         text-align: left; /* Mod: center to left */
         pointer-events: none;
@@ -219,12 +223,12 @@ Change Log:
     }
 
     .header h1 {
-        font-family: "Playfair Display";
+        font-family: "Orbitron", sans-serif;
         font-size: 4.5em;
         line-height: 1;
         margin: 0;
         letter-spacing: -0.025em;
-        color: #d1b790;
+        color: var(--yellow-color);
     }
 
     .header h1 span {
@@ -236,21 +240,23 @@ Change Log:
     }
 
     .header h2 {
-        font-size: 0.585em;
-        margin: 0.25em 0;
+        font-family: "Orbitron", sans-serif;
+        font-size: 1em;
+        margin: 0em 0;
         white-space: nowrap;
-        text-indent: 1em;
+        text-indent: 1.4em;
         letter-spacing: 1em;
         text-transform: uppercase;
-        color: #d6483b;
+        color: var(--red-color);
     }
 
     .score {
+        font-family: "Orbitron", sans-serif;
         position: absolute; /* Mod: Added */
         top: 0vh; /* Mod: Added */
-
         width: 100%;
         margin: 2em 0 0;
+        right: 2em;
         text-align: right; /* Mod: Center to Right*/
         white-space: nowrap;
     }
@@ -258,57 +264,50 @@ Change Log:
     .score__content {
         position: relative;
         display: inline-block;
-        padding: 0 1em;
+        padding: 1em;
         vertical-align: top;
     }
 
     .score__content:nth-child(2) {
-        border-right: 1px solid #d1b790;
-        border-left: 1px solid #d1b790;
+        border-right: 1px solid var(--yellow-color);
+        border-left: 1px solid var(--yellow-color);
     }
 
     .score__label {
-        font-size: 9px;
+        font-family: "Orbitron", sans-serif;
         position: relative;
+        font-size: 1.5em;
         margin: 0 0 0.5em 0;
         text-align: center;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: #d1b790;
+        color: var(--red-color);
     }
 
     .score__value {
-        font-family: "Playfair Display";
+        font-family: "Orbitron", sans-serif;
         font-weight: bold;
-        color: #d1b790;
+        text-align: center;
+        color: var(--blue-color);
     }
 
     .score__value--level {
-        font-size: 26px;
+        font-size: 2em;
         text-align: center;
     }
 
     .score__value--points {
-        font-size: 30px;
-    }
-
-    .level-circle {
-        position: absolute;
-        left: 50%;
-        width: 46px;
-        margin: -37px 0 0 -23px;
-        -webkit-transform: rotate(-90deg);
-        transform: rotate(-90deg);
+        font-size: 2em;
     }
 
     .score__value--mistakes {
         position: relative;
-        width: 60px;
-        height: 8px;
+        text-align: center;
+        width: 120px;
+        height: 10px;
         margin-top: 20px;
-        border-radius: 3px;
-        /*background-color: #f25346;*/
-        background-color: #d1b790;
+        border-radius: 6px;
+        background-color: var(--yellow-color);
     }
 
     .mistakes-bar {
@@ -319,7 +318,7 @@ Change Log:
         left: 0;
         margin: 2px;
 
-        background-color: #f25346;
+        background-color: var(--red-color);
         -webkit-animation-name: none;
         animation-name: none;
         -webkit-animation-duration: 150ms;
@@ -339,18 +338,19 @@ Change Log:
     }
 
     .message--replay {
+        font-family: "Orbitron", sans-serif;
         font-size: 1.25vw;
-        bottom: 10vh; /* Mod: 40 - 10 */
+        bottom: 8vh; /* Mod: 40 - 10 */
         display: none;
         text-indent: 0.5em;
-        letter-spacing: 0.5em;
-        color: #d1b790;
+        letter-spacing: 0.2em;
+        color: var(--yellow-color);
     }
 
     .message--info {
-        font-family: "Playfair Display";
-        font-size: 0.85em;
-        bottom: 8vh;
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.1em;
+        bottom: 6vh;
         letter-spacing: 0.2em;
         color: #68c3c0;
     }
