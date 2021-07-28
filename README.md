@@ -18,13 +18,13 @@ A Tiny-Heli can be easiy rigged up using a toy or a mock helicopter/airplane. Sh
 ## Game Play
 At the start of the play and after every successful move, you are presented with a new and a unique 3D puzzle. A set of rings are suspended in the space above a helicopter field. You have to figure out the helicopter manoeuvre that, once executed, will move through all the rings. Each 3D manoeuvre has a corresponding 2D Tiny-Heli gesture. With the help of your Tiny-Heli you will make the gesture corresponding to your solution. The game tiny helicopter will execute the manoeuvre in the game. See if your manoeuvre solves the puzzle. 
 
-If you are successful, and depending upon your past performance, you will move on the next puzzle in the same or the next level of the game.The game has three levels of difficulty. The number of rings gets reduced at each level, making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game. 
+If you are successful, and depending upon your past performance, you will move on to the next puzzle in the same or the next level of the game.The game has three levels of difficulty. The number of rings gets reduced at each level, making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game. 
 
-If you succeed at all the levels, you become the "The Tiny Heli Master"! *That is an honour!*
+If you succeed at all the levels, you become the "**The Tiny Heli Master**"! *That is an honour!*
 
 
-## Game Manoeuvres and Gesture Set
-The game has been designed in a manner that the manoeurvres and the corresponding gesture sets can be easily added to the game in a modular fashion. At present, the game supports three 3D-manoeuvres and the corresponding Tiny-Heli 2D-gestures:
+## Game Manoeuvre and Gesture Set
+The game has been designed in a manner that the manoeurvres and the corresponding gesture sets can be easily added to the game in a modular fashion. At present, the game supports three 3D-manoeuvres and three corresponding Tiny-Heli 2D-gestures:
 
 
 
@@ -36,7 +36,7 @@ The game has been designed in a manner that the manoeurvres and the correspondin
 
 ## Tips
 - **For accuracy** - Point the Tiny-Heli away from you and draw the shapes relatively quickly, and not too large. 
-- **For better mental visualization** - Adjust the orientation and zoom of the play area in the game to get the best view for you. </p>
+- **For better mental visualization** - Adjust the orientation and zoom of the play area in the game to get the best view of the 3D rings for you. </p>
 
 ## Experiment description
  *TinyHeliShow* project is built with:
