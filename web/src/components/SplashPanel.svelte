@@ -96,14 +96,14 @@ limitations under the License.
     >
       <div class="sticky" bind:this={stickyEl}>
         <h1>Tiny HeliShow</h1>
-        <h2>Play a novel 3D puzzle game using your tiny helicopter. </h2>
+        <h2>Play a novel 3D puzzle game using your tiny helicopter.</h2>
       </div>
     </header>
     <div class="scroll-container">
       <section bind:this={topSectionEl}>
         <div class="row">
           <h3>Getting Started</h3>
-          
+
           <!--
           <p>
             Download and unzip this <a
@@ -115,20 +115,18 @@ limitations under the License.
 
           <p>
             Download and unzip this <a
-              
               href="./tinyhelishow-arduino-sketch-v001.zip"
               target="_blank">sketch file</a
             >.
           </p>
-          
-          
+
           <br />
           <p>
-            Open the arduino/tinyhelishow folder and double click on tinyhelishow.ino
-            file. The file will open in your Arduino IDE window. Check you are
-            connected to the correct board and upload your file using the
-            'right-pointing' arrow in the top left corner of the window. Upload
-            may take a couple of minutes.
+            Open the arduino/tinyhelishow folder and double click on
+            tinyhelishow.ino file. The file will open in your Arduino IDE
+            window. Check you are connected to the correct board and upload your
+            file using the 'right-pointing' arrow in the top left corner of the
+            window. Upload may take a couple of minutes.
           </p>
           <br />
           <p>
@@ -146,8 +144,8 @@ limitations under the License.
 
           <h4>Connect via Bluetooth</h4>
           <p>
-            Click the "connect" button below, then select "TinyHeliShow" from the
-            dialogue box.
+            Click the "connect" button below, then select "TinyHeliShow" from
+            the dialogue box.
           </p>
         </div>
         <div class="row">
@@ -159,61 +157,68 @@ limitations under the License.
           <div class="row">
             <h3>Play setup</h3>
             <p>
-              Using an elastic band, tape, or a piece of velcro, attach the board to the
-              top of a mock or minature helicopter model. Alternatively, you can use a 
-              wand-like stick (about 1-2ft long or strech you arm fully forward). We will call
-              this contraption: 'Tiny-Heli'.
-              Make sure that the LED is facing upwards and hold the USB cable in your hand, 
-              making sure the USB/board connector is towards your wrist.
+              Using an elastic band, tape, or a piece of velcro, attach the
+              board to the top of a mock or minature helicopter model.
+              Alternatively, you can use a wand-like stick (about 1-2ft long or
+              strech you arm fully forward). We will call this contraption:
+              'Tiny-Heli'. Make sure that the LED is facing upwards and hold the
+              USB cable in your hand, making sure the USB/board connector is
+              towards your wrist.
             </p>
             <br />
             <h3>Game Play</h3>
             <p>
-            You will be presented with a 3D puzzle. A set of rings will be suspended in the 
-            space above a helicopter field. You will have to figure out the helicopter manoeuvre that, once 
-            executed, will cover all the rings. Each 3D manoeuvre has a corresponding 2D tiny heli gesture.
-            With the help of your Tiny-Heli you will make the gesture corresponding to your solution. 
-            The game tiny helicopter will execute the manoeuvre in the game. See if your manoeuvre solves the puzzle.
+              You will be presented with a 3D puzzle. A set of rings will be
+              suspended in the space above a helicopter field. You will have to
+              figure out the helicopter manoeuvre that, once executed, will
+              cover all the rings. Each 3D manoeuvre has a corresponding 2D tiny
+              heli gesture. With the help of your Tiny-Heli you will make the
+              gesture corresponding to your solution. The game tiny helicopter
+              will execute the manoeuvre in the game. See if your manoeuvre
+              solves the puzzle.
             </p>
-            <br>
+            <br />
             <p>
-            The game has three levels of difficulty. The number of rings gets reduced at each level, 
-            making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game. 
-            If you clear all levels, you become the "The Tiny Heli Master"!  That is an honour!
-
-          </p>
-          <br>
-            <h3>Game Manoeuvres and Gestrue Set</h3>
+              The game has three levels of difficulty. The number of rings gets
+              reduced at each level, making it harder and harder to figure out
+              the move. You can make a maximum of 3 mistakes in the game. If you
+              clear all levels, you become the "The Tiny Heli Master"! That is
+              an honour!
+            </p>
+            <br />
+            <h3>Game Manoeuvre and Gesture Set</h3>
             <p>
-            The game has been designed in a manner that the manoeurvres and the corresponding Tiny-Heli gesture sets
-            can be easily added to the game in a modular fashion. At present, the game supports three 3D-manoeuvres 
-            and the corresponding Tiny-Heli 2D-gestures*:
-          </p>
-          <br>
+              The game has been designed in a manner that the manoeurvres and
+              the corresponding Tiny-Heli gesture sets can be easily added to
+              the game in a modular fashion. At present, the game supports the
+              following 3D-manoeuvres and the corresponding Tiny-Heli 2D-gestures:
+            </p>
+            <br />
             <p>
-              <font size="2" face="RobotoMono" ></font>
-              <table >
-                <tr>
-                  <th>Heli Manoeuvre</th>
-                  <th>Tiny Heli Gesture</th>
-                </tr>
-                <tr>
-                  <td>GLOBE</td>
-                  <td>Circle</td>
-                </tr>
-                <tr>
-                  <td>FORTRESS</td>
-                  <td>Square</td>
-                </tr>
-                <tr>
-                  <td>TORNADO</td>
-                  <td>Triangle</td>
-                </tr>     
-              </table>
-            
-          
+              <font size="2" face="RobotoMono" />
+            </p>
+            <table>
+              <tr>
+                <th>3D Heli Manoeuvre</th>
+                <th>2D Tiny Heli Gesture</th>
+              </tr>
+              <tr>
+                <td>GLOBE</td>
+                <td>Circle</td>
+              </tr>
+              <tr>
+                <td>FORTRESS</td>
+                <td>Square</td>
+              </tr>
+              <tr>
+                <td>TORNADO</td>
+                <td>Triangle</td>
+              </tr>
+            </table>
           </div>
+
           <div class="row instruction-gif-row">
+            <!--
             <img
               class="instruction-image"
               src="./images/Square.gif"
@@ -229,17 +234,21 @@ limitations under the License.
               src="./images/Triangle.gif"
               alt="Triangle shape"
             />
-
-            <br />
+          -->
+        
+            <p>Some Tips:</p>
+            <ol>
+              <li>
+                For accuracy: Point the Tiny-Heli away from you and
+                draw the shapes relatively quickly, and not too large.
+              </li>
+              <li>
+                For better visualization: Adjust the orientation and zoom of the
+                play area to get the best view of the 3D rings.
+              </li>
+            </ol>
           </div>
-          <p>
-            
-           
-              Get ready to draw out your heli-formations. 
-
-            
-          </p>
-          <br />
+          <p>Ready for the Tiny Heli Show?</p>
           <br />
 
           <div class="row" class:inverted={$onboardingStep === 1}>
@@ -251,14 +260,6 @@ limitations under the License.
               {/if}
             </button>
           </div>
-
-          <p> Couple of tips: (1) For accuracy - point the wand/helicopter-model away from you and draw the shapes relatively quickly,
-            and not too large. (2) Adjust the orientation and zoom of the play area to your taste. </p>
-            
-          <p> Please Note: At present, the Tiny Heli gestures are based on the Google TinyML Experiments:Astrowand project set. 
-            More or different Heli Manoeuvres and Tiny Heli gesture sets can be easily added to the game. </p>
-
-
         </section>
       {/if}
     </div>
@@ -338,5 +339,22 @@ limitations under the License.
   .instruction-image {
     border: 2px solid $fgColor;
     width: 100%;
+  }
+
+  .table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    
   }
 </style>
