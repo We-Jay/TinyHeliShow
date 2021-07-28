@@ -59,18 +59,26 @@ More or different Heli-Manoeuvres and Tiny-Heli gesture sets can be easily added
 
 ## Tools
 
-- Linux, MacOS or Windows computer with [Chrome](https://www.google.com/chrome/?brand=WHAR&geo=US&gclid=Cj0KCQjw9_mDBhCGARIsAN3PaFNRBCVUxmhR1QPA2LHaoELEr9yc1KkSNQ-Jc9KVZd8Sq2ux5gR6mJsaAm_6EALw_wcB&gclsrc=aw.ds "Chrome") installed
+- Linux, MacOS or Windows computer with [Chrome](https://www.google.com/chrome/?brand=WHAR&geo=US&gclid=Cj0KCQjw9_mDBhCGARIsAN3PaFNRBCVUxmhR1QPA2LHaoELEr9yc1KkSNQ-Jc9KVZd8Sq2ux5gR6mJsaAm_6EALw_wcB&gclsrc=aw.ds "Chrome") installed. At the moment the game has only been tested on the Chrome browser running on MacOS.
 - TensorFlow Microcontroller Challenge Kit by Sparkfun or [Arduino Nano BLE Sense 33](https://store.arduino.cc/usa/nano-33-ble-sense "Arduino Nano")
 - [Micro USB](https://www.google.com/search?rlz=1C5CHFA_enUS858US858&sxsrf=ALeKk01CbJTvQbYgX6arJbsjcRVmv-3-RQ:1584929968297&q=Micro+USB+cable&spell=1&sa=X&ved=2ahUKEwjl8IOexK_oAhXDqZ4KHZ0mCmcQBSgAegQIDhAn&biw=1680&bih=832 "Micro USB") cable (If you're on a USB-C laptop, instead get a [USB-C to Micro USB](https://www.google.com/search?&q=USB-C+to+Micro+USB+cable "USB-C to Micro USB") cable)
-- Rubberband / Velcro
-- Stick, wand, or a toy Helicopter/Airplane model.
-- [Optional] Battery 
+- Rubberband / Tape / Velcro
+- Toy Helicopter Model/ Stick, Wand, etc.
+- [Optional] Battery / USB Power Bank (with appropriate current ratings)
 
 ----
 
-## Install and Run
+## Install and Run the TinyHeliShow Game Application
+- If your system does not have it, install node.js and npm
+- Download or clone this project: "TinyHeliShow".
+- Move to the 'web' directory.
+- To install: "npm install".
+- For development and run: "npm run dev".
+- To run: "npm start".
 
-(The following descriptions are the same as applicable to the Google Tiny ML projects described above.)
+## Install and Run the Microcontroller Software
+
+*The following descriptions are the same as applicable to the other Google Tiny ML projects described above.*
 
 Flashing: Using the Arduino Nano Sense 33 BLE
 
@@ -89,7 +97,7 @@ Flashing: Using the Arduino Nano Sense 33 BLE
 
 
 3. Install Arduino libraries 
-    -  Navigate to Tools > Manage Libraries
+    - Navigate to Tools > Manage Libraries
     - Search for and install:
     - Arduino_LSM9DS1
     - ArduinoBLE
