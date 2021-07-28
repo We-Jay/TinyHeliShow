@@ -95,8 +95,8 @@ limitations under the License.
       }`}
     >
       <div class="sticky" bind:this={stickyEl}>
-        <h1>Tiny <br> Heli-Show</h1>
-        <h2>Play a 3d puzzle game using your tiny helicopter. </h2>
+        <h1>Tiny HeliShow</h1>
+        <h2>Play a novel 3D puzzle game using your tiny helicopter. </h2>
       </div>
     </header>
     <div class="scroll-container">
@@ -159,18 +159,37 @@ limitations under the License.
           <div class="row">
             <h3>Play setup</h3>
             <p>
-              Using an elastic band, or piece of velcro, attach the board to the
-              top of a wand-like stick (about 2ft long or strech you arm forward). 
-              You may also attach the board to a mock/minature helicopter or airplane model. 
-              Make sure the LED is facing upwards and hold the USB cable in your hand, making sure
-              the USB/board connector is towards your wrist.
+              Using an elastic band, tape, or a piece of velcro, attach the board to the
+              top of a mock or minature helicopter model. Alternatively, you can use a 
+              wand-like stick (about 1-2ft long or strech you arm fully forward). We will call
+              this contraption: 'Tiny-Heli'.
+              Make sure that the LED is facing upwards and hold the USB cable in your hand, 
+              making sure the USB/board connector is towards your wrist.
             </p>
             <br />
             <h3>Game Play</h3>
             <p>
-              Get ready to draw out your heli-formations. There are three manoeuvres and corresponding control
-              gestures to begin with:
+            You will be presented with a 3D puzzle. A set of rings will be suspended in the 
+            space above a helicopter field. You will have to figure out the helicopter manoeuvre that, once 
+            executed, will cover all the rings. Each 3D manoeuvre has a corresponding 2D tiny heli gesture.
+            With the help of your Tiny-Heli you will make the gesture corresponding to your solution. 
+            The game tiny helicopter will execute the manoeuvre in the game. See if your manoeuvre solves the puzzle.
             </p>
+            <br>
+            <p>
+            The game has three levels of difficulty. The number of rings gets reduced at each level, 
+            making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game. 
+            If you clear all levels, you become the "The Tiny Heli Master"!  That is an honour!
+
+          </p>
+          <br>
+            <h3>Game Manoeuvres and Gestrue Set</h3>
+            <p>
+            The game has been designed in a manner that the manoeurvres and the corresponding Tiny-Heli gesture sets
+            can be easily added to the game in a modular fashion. At present, the game supports three 3D-manoeuvres 
+            and the corresponding Tiny-Heli 2D-gestures*:
+          </p>
+          <br>
             <p>
               <font size="2" face="RobotoMono" ></font>
               <table >
@@ -214,13 +233,11 @@ limitations under the License.
             <br />
           </div>
           <p>
-            When prompted to solve the puzzle, figure out the manoeuvre that will provide coverage to all the rings. Then 
-            draw out the corresponding Tiny Heli control gesture. The Tiny Helicopter will execute the manoeuvre in the game. 
-            See if your manoeuvre solves the puzzle.
-            The game will have three levels of difficulty. 
-            You can make a maximum of 3 mistakes at any level. 
-            If you clear all levels, you become the "The Tiny Heli Master"! 
-            That is an honour!
+            
+           
+              Get ready to draw out your heli-formations. 
+
+            
           </p>
           <br />
           <br />

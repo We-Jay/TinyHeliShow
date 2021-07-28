@@ -3,29 +3,57 @@
 ![theme](/readme_images/tiny-heli-show-theme.jpeg)
 ## Overview
 **TinyHeliShow** 
-is a puzzle game, which gives users a configuration of rings in 3d space and prompts users to guess a tiny heli manoeuvre that will solve the puzzle. 
+is a novel 3D puzzle game. On every play, it presents the players with a unique configuration of rings suspended in a 3D space. It then prompts the players to figure out a tiny helicopter manoeuvre that will solve the puzzle. 
 
 A screenshot of the game interface is shown below: ![here:](/readme_images/TinyHeliShow.png)
 
-This project is built with:
+----
+
+## Play setup
+Using an elastic band, tape, or a piece of velcro, attach the board to the top of a mock or minature helicopter model. Alternatively, you can use a wand-like stick (about 1-2ft long or strech you arm fully forward). We will call this contraption: 'Tiny-Heli'. Make sure that the LED is facing upwards and hold the USB cable in your hand, making sure the USB/board connector is towards your wrist.
+
+A Tiny-Heli can be easiy rigged up using a toy or a mock helicopter/airplane. Shown below is the Tiny-Heli setup that we are using.![Mock TinyML HeliCopter](/readme_images/mock-tinyml-copter.jpeg)
+
+
+## Game Play
+At the start of the play and after every successful move, you are presented with a new and a unique 3D puzzle. A set of rings are suspended in the space above a helicopter field. You have to figure out the helicopter manoeuvre that, once executed, will move through all the rings. Each 3D manoeuvre has a corresponding 2D Tiny-Heli gesture. With the help of your Tiny-Heli you will make the gesture corresponding to your solution. The game tiny helicopter will execute the manoeuvre in the game. See if your manoeuvre solves the puzzle. 
+
+If you are successful, and depending upon your past performance, you will move on the next puzzle in the same or the next level of the game.The game has three levels of difficulty. The number of rings gets reduced at each level, making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game. 
+
+If you succeed at all the levels, you become the "The Tiny Heli Master"! *That is an honour!*
+
+
+## Game Manoeuvres and Gesture Set
+The game has been designed in a manner that the manoeurvres and the corresponding gesture sets can be easily added to the game in a modular fashion. At present, the game supports three 3D-manoeuvres and the corresponding Tiny-Heli 2D-gestures:
+
+
+
+|   #   |  Heli Manoeuvre   | Tiny Heli Gesture*    |
+| :------------- | :----------: | -----------: |
+|  1 | GLOBE    | Circle   |
+|  2 | FORTRESS | Square   | 
+|  3 | TORNADO  | Triangle | |
+
+## Tips
+- **For accuracy** - Point the Tiny-Heli away from you and draw the shapes relatively quickly, and not too large. 
+- **For better mental visualization** - Adjust the orientation and zoom of the play area in the game to get the best view for you. </p>
+
+## Experiment description
+ *TinyHeliShow* project is built with:
 - [THREEJS](https://threejs.org/ "three") and standard web technologies (HTML, CSS & Javascript) 
 - [TensorFlow Lite for Microcontrollers](https://www.tensorflow.org/lite/microcontrollers "TFL4M")
 - [Arduino Sense 33 BLE](https://store.arduino.cc/usa/nano-33-ble-sense "Arduino Store")  
-----
-
-## Experiment description
- [TinyHeliShow](https://experiments.withgoogle.com/astrowand "Astrowand Google Experiment") lets you play a puzzle game with a tiny ML gesture controller. The game is a web based 3d game and has three levels of difficulty. 
  
-The Tiny Heli gesture controller can be easiy rigged up using a toy or a mock helicopter/airplane. ![Mock TinyML HeliCopter](/readme_images/mock-tinyml-copter.jpeg)
- 
-
 
 Other Tiny ML google experiments from which TinyHeliShow builds its understanding of using microcroller based tiny ML models are:
 
 - [Air Snare](https://experiments.withgoogle.com/air-snare "Air Snare Google Experiment") lets you play the drums in the air.
 - [Finger User Interface](https://experiments.withgoogle.com/finger-user-interface "FUI Google Experiment") or FUI (pronounced Foo-ey) lets you control connected devices with the wave of a finger.
 - [Tiny Motion Trainer](https://experiments.withgoogle.com/tiny-motion-trainer "Tiny Motion Trainer") lets you train and test IMU based TFLite models in the browser.
-- [Astrowand](https://experiments.withgoogle.com/astrowand "Astrowand") 
+- [Astrowand](https://experiments.withgoogle.com/astrowand "Astrowand") lets you draw shapes in the sky to form constellations.
+
+*At present, the Tiny-Heli gestures are based on the Astrowand project set. 
+More or different Heli-Manoeuvres and Tiny-Heli gesture sets can be easily added to the game in a modular way. 
 
 ----
 
