@@ -25,8 +25,10 @@ function createRing() {
     //material.flatShading = true;
     // create a Mesh containing the geometry and material
     const ring = new Mesh(ringGeometry, material);
+    ring.castShadow = true;
+    ring.receiveShadow = true;
 
-    console.log(ringGeometry.parameters);
+    // console.log(ringGeometry.parameters);
 
 
     //ring.translateX (-1);
@@ -55,6 +57,39 @@ function createRing() {
     return ring;
 
 }
+
+//Create a ring on the periphery of the platform
+function createPlatformRing(){
+
+    const radius = 10;
+    const tubeRadius = .05;
+    const radialSegments = 4;
+    const tubularSegments = 120;
+    const ringGeometry = new TorusGeometry(radius, tubeRadius, radialSegments, tubularSegments);
+    
+    const material = new MeshPhongMaterial({ color:  0xedff0ff });
+    const ring = new Mesh(ringGeometry, material);
+    ring.castShadow = true;
+    ring.receiveShadow = true;
+
+    // console.log(ringGeometry.parameters);
+
+    ring.rotateX(-Math.PI/2);
+    ring.translateZ(-.1);
+    
+    const radiansPerSecond = MathUtils.degToRad(30);
+
+    // this method will be called once per frame
+    ring.tick = (delta) => {
+        // increase the ring's rotation each frame
+        ring.rotation.z += radiansPerSecond * delta;
+        ring.rotation.x += radiansPerSecond * delta;
+        ring.rotation.y += radiansPerSecond * delta;
+    };
+
+    return ring;
+}
+
 
 // Creates specified number of rings, randomly distributed on the given path
 function createRingsArray(curvePath, noOfPoints) {
@@ -148,7 +183,7 @@ function createHeliRing() {
     
     //const material = new MeshPhongMaterial({ color: Math.random() * 0xffffff });
     
-
+    //These methods won't work because ring is not initialized.
 
     //ring.translateX (-1);
     //ring.translateY (1.2);
@@ -158,7 +193,7 @@ function createHeliRing() {
     // ring.position.y = Math.random() * 10 - 4;
     // ring.position.z = Math.random() * 10 - 4;
 
-    //ring.rotateY(-Math.PI/2);
+    // ring.rotateX(-Math.PI/2);
     // ring.rotation.set(-0.5, -0.1, 0.8);
     // ring.rotation.set(Math.random() * -1, Math.random() * -1 , Math.random() * 1);
 
@@ -168,4 +203,4 @@ function createHeliRing() {
 
 }
 
-export { createRing, createRingsArray, createHeliRing }
+export { createRing, createRingsArray, createPlatformRing, createHeliRing }
