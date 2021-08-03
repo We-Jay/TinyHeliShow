@@ -35,5 +35,14 @@ export const sounds = readable({
   },
   triangle: {
     url: 'sounds/triangle.mp3'
+  },
+  alpha: {
+    url: 'sounds/alpha.mp3'
+  },
+  beta: {
+    url: 'sounds/beta.mp3'
+  },
+  gamma: {
+    url: 'sounds/gamma.mp3'
   }
 });
