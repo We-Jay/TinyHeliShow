@@ -316,7 +316,8 @@ limitations under the License.
     }
     align-items: flex-start;
   }
-
+  
+  /*
   .instruction-gif-row {
     img {
       display: inline-block;
@@ -325,6 +326,7 @@ limitations under the License.
       border-radius: 50%;
     }
   }
+  */
   @media screen and (min-width: 905px) {
     .container {
       display: flex;
@@ -375,13 +377,15 @@ limitations under the License.
     }
   }
 
+  /*
   .instruction-image {
     border: 2px solid $fgColor;
-    width: 100%;
+    width: 100%;c
   }
+  */
 
-  .table {
-    font-family: arial, sans-serif;
+  table {
+    //font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
   }
