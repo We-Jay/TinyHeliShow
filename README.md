@@ -6,7 +6,7 @@
 is a novel 3D puzzle game. On every game play, it presents the players with a unique configuration of rings suspended in a 3D space. It then prompts the players to figure out a tiny helicopter manoeuvre that will solve the puzzle. The game is inspired from the RC Helicopter shows organized in different parts of the world. It adds an interesting element of puzzle solving to make it even more fun. 
 
 TinyHeliShow is engaging on its own, but in a simple manner it also demonstrates:
-- how TinyML can be incorporated into the games to create interactive fun experiences
+- how TinyML can be incorporated into the games to create interactive fun experiences, and
 - how multiple sets of gestures and game elements can be added to the game to create different game scenarios and challenges.
 
 A screenshot of the game interface is shown below: ![here:](/readme_images/TinyHeliShow.png)
@@ -25,7 +25,7 @@ A Tiny-Heli can be easiy rigged up using a toy or a mock helicopter/airplane. Sh
 When the game starts, you will be prompted to make a relevant (any from your chosen set) Tiny-Heli gesture. This will set up the game corresponding to your chosen manoeuvre and gesture set.
 Then, at the start of the play and after every successful move, you are presented with a new and a unique 3D puzzle. A set of rings are suspended in the space above a helicopter field. You have to figure out the helicopter manoeuvre that, once executed, will move through all the rings. Each 3D manoeuvre has a corresponding 2D Tiny-Heli gesture. With the help of your Tiny-Heli you will make the gesture corresponding to your solution. The game tiny helicopter will execute the manoeuvre in the game. See if your manoeuvre solves the puzzle. 
 
-If you are successful, and depending upon your past performance, you will move on to the next puzzle in the same or the next level of the game.The game has three levels of difficulty. The number of rings gets reduced at each level, making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game. 
+If you are successful, and depending upon your past performance, you will move on to the next puzzle in the same or the next level of the game.The game has three levels of difficulty. The number of rings gets reduced at each level, making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game at any level. 
 
 If you succeed at all the levels, you become the "**The Tiny Heli Master**"! *That is an honour!*
 
