@@ -96,6 +96,8 @@ function createRingsArray(curvePath, noOfPoints) {
 
     const curvePoints = curvePath.curves.reduce((p, d) => [...p, ...d.getSpacedPoints(20)], []);
 
+    console.log("curvePoints Length", curvePoints.length);
+
     if (curvePoints === null) {
         console.log("Null Curve Points");
     }
@@ -103,7 +105,8 @@ function createRingsArray(curvePath, noOfPoints) {
     // get an array of indices of random points on the path 
     let ringPositions =  getRndIndexArray(noOfPoints);
 
-    //console.log("Ring Positions", ringPositions);
+
+    console.log("Ring Positions", ringPositions);
 
     
     const ringsArray = [];
@@ -118,6 +121,7 @@ function createRingsArray(curvePath, noOfPoints) {
 
         let index = ringPositions[i];
         const newPosition = curvePoints[index];
+        //console.log("Curve Point at", ringPositions[i], ":" ,curvePoints[ringPositions[i]]);
         ring.position.copy(newPosition);
         //ring.position.set(curvePoints[index].x, curvePoints[index].y, curvePoints[index].z);
       
@@ -150,12 +154,19 @@ function createRingsArray(curvePath, noOfPoints) {
         //setting min so that there is not point just very near the origin.
         var min = 10;
         var max = Math.floor(pointsArrayLen / noOfPoints);
-        var increment = Math.floor(pointsArrayLen / noOfPoints);
+        var increment = Math.floor((pointsArrayLen-10) / noOfPoints);
 
         for (let i = 0; i < noOfPoints; i++) {
+            //Boundary condition safety
+            if (min > pointsArrayLen) {
+
+                min = pointsArrayLen-1;
+
+            }  
+            
             if (max > pointsArrayLen) {
 
-                max = pointsArrayLen;
+                max = pointsArrayLen-1;
 
             }
             // console.log ("Max-Min Value:",max, min);

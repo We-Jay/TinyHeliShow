@@ -3,20 +3,27 @@
 ![theme](/readme_images/tiny-heli-show-theme.jpeg)
 ## Overview
 **TinyHeliShow** 
-is a novel 3D puzzle game. On every play, it presents the players with a unique configuration of rings suspended in a 3D space. It then prompts the players to figure out a tiny helicopter manoeuvre that will solve the puzzle. 
+is a novel 3D puzzle game. On every game play, it presents the players with a unique configuration of rings suspended in a 3D space. It then prompts the players to figure out a tiny helicopter manoeuvre that will solve the puzzle. The game is inspired from the RC Helicopter shows organized in different parts of the world, but adds an interesting element of puzzle solving to make it even more fun. 
+
+TinyHeliShow is engaging on its own, but it also demonstrates:
+- how the TinyML can be incorporated into the games to create interactive fun experiences
+- how multiple sets of gestures and game elements can be added to the game to create different game scenarios and challenges.
 
 A screenshot of the game interface is shown below: ![here:](/readme_images/TinyHeliShow.png)
 
 ----
 
 ## Play setup
+
+
 Using an elastic band, tape, or a piece of velcro, attach the board to the top of a mock or minature helicopter model. Alternatively, you can use a wand-like stick (about 1-2ft long or strech you arm fully forward). We will call this contraption: 'Tiny-Heli'. Make sure that the LED is facing upwards and hold the USB cable in your hand, making sure the USB/board connector is towards your wrist.
 
 A Tiny-Heli can be easiy rigged up using a toy or a mock helicopter/airplane. Shown below is the Tiny-Heli setup that we are using.![Mock TinyML HeliCopter](/readme_images/mock-tinyml-copter.jpeg)
 
 
 ## Game Play
-At the start of the play and after every successful move, you are presented with a new and a unique 3D puzzle. A set of rings are suspended in the space above a helicopter field. You have to figure out the helicopter manoeuvre that, once executed, will move through all the rings. Each 3D manoeuvre has a corresponding 2D Tiny-Heli gesture. With the help of your Tiny-Heli you will make the gesture corresponding to your solution. The game tiny helicopter will execute the manoeuvre in the game. See if your manoeuvre solves the puzzle. 
+When the game starts, you will be prompted to make a relevant (any from your chosen set) Tiny-Heli gesture. This will set up the game corresponding to your chosen manoeuvre and gesture set.
+Then, at the start of the play and after every successful move, you are presented with a new and a unique 3D puzzle. A set of rings are suspended in the space above a helicopter field. You have to figure out the helicopter manoeuvre that, once executed, will move through all the rings. Each 3D manoeuvre has a corresponding 2D Tiny-Heli gesture. With the help of your Tiny-Heli you will make the gesture corresponding to your solution. The game tiny helicopter will execute the manoeuvre in the game. See if your manoeuvre solves the puzzle. 
 
 If you are successful, and depending upon your past performance, you will move on to the next puzzle in the same or the next level of the game.The game has three levels of difficulty. The number of rings gets reduced at each level, making it harder and harder to figure out the move. You can make a maximum of 3 mistakes in the game. 
 
@@ -24,15 +31,25 @@ If you succeed at all the levels, you become the "**The Tiny Heli Master**"! *Th
 
 
 ## Game Manoeuvre and Gesture Set
-The game has been designed in a manner that the manoeurvres and the corresponding gesture sets can be easily added to the game in a modular fashion. At present, the game supports three 3D-manoeuvres and three corresponding Tiny-Heli 2D-gestures:
+The game has been designed in a manner that the manoeurvres and the corresponding gesture sets can be easily added to the game in a modular fashion. At present, the game supports the following two sets of  3D-manoeuvres and their corresponding Tiny-Heli 2D-gesture sets:
 
+Set ABG:
 
+|   #   |  Heli Manoeuvre   | Tiny Heli Gesture    |
+| :------------- | :----------: | -----------: |
+|  1 | PETALS    | Alpa(α)   |
+|  2 | RAINBOW   | Beta(β)   | 
+|  3 | TORNADO  | Gamma(γ) | |
 
+Set CST:
 |   #   |  Heli Manoeuvre   | Tiny Heli Gesture*    |
 | :------------- | :----------: | -----------: |
-|  1 | GLOBE    | Circle   |
-|  2 | FORTRESS | Square   | 
-|  3 | TORNADO  | Triangle | |
+|  1 | GLOBE    | Circle(◯)   |
+|  2 | FORTRESS | Square(▢)  | 
+|  3 | TRΕΕ  | Triangle(△) | |
+
+At the start of the game application, you will be provided with the sketches that implement these gesture sets.
+You can download and load the desired gesture sets on to your Tiny-Heli boards.
 
 ## Tips
 - **For accuracy** - Point the Tiny-Heli away from you and draw the shapes relatively quickly, and not too large. 
@@ -52,7 +69,7 @@ Other Tiny ML google experiments from which TinyHeliShow builds its understandin
 - [Tiny Motion Trainer](https://experiments.withgoogle.com/tiny-motion-trainer "Tiny Motion Trainer") lets you train and test IMU based TFLite models in the browser.
 - [Astrowand](https://experiments.withgoogle.com/astrowand "Astrowand") lets you draw shapes in the sky to form constellations.
 
-*At present, the Tiny-Heli gestures are based on the Astrowand project set. 
+* At present, one of the Tiny-Heli gesture sets (set CST) is based on the Astrowand project set. So you are using that set, you can also directly use the wand prepared for the Astrowand application without the need to download a sketch.
 More or different Heli-Manoeuvres and Tiny-Heli gesture sets can be easily added to the game in a modular way. 
 
 ----

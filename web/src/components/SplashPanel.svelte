@@ -115,15 +115,21 @@ limitations under the License.
 
           <p>
             Download and unzip this <a
-              href="./tinyhelishow-arduino-sketch-v001.zip"
+              href="./tinyhelishow-arduino-sketch-v002.zip"
               target="_blank">sketch file</a
             >.
           </p>
 
           <br />
           <p>
-            Open the arduino/tinyhelishow folder and double click on
-            tinyhelishow.ino file. The file will open in your Arduino IDE
+            There are two gesture sets: ABG (gestures: alpha, beta, gamma), 
+            and CST (gestures: circle, square, triangle). 
+            You can use either or both of these sets. 
+            If you are using both, you may either create two different boards
+            or load one sketch into a board, play a game, load the other sketch, 
+            play a game, and so on.
+            Open the folder arduino/tinyhelishow-abg (or arduino/tinyhelishow-cst) and double click on
+            tinyhelishow-abg.ino (or tinyhelishow-cst.ino) file. The file will open in your Arduino IDE
             window. Check you are connected to the correct board and upload your
             file using the 'right-pointing' arrow in the top left corner of the
             window. Upload may take a couple of minutes.
@@ -144,7 +150,7 @@ limitations under the License.
 
           <h4>Connect via Bluetooth</h4>
           <p>
-            Click the "connect" button below, then select "TinyHeliShow" from
+            Click the "connect" button below, then select "TinyHeliShow-ABG" (or "TinyHeliShow-CSt") from
             the dialogue box.
           </p>
         </div>
@@ -164,11 +170,69 @@ limitations under the License.
               'Tiny-Heli'. Make sure that the LED is facing upwards and hold the
               USB cable in your hand, making sure the USB/board connector is
               towards your wrist.
+              
             </p>
-            <br />
+            <br/>
+            <h3>Game Manoeuvre and Gesture Sets</h3>
+            <p>
+              The game has been designed in a manner that the manoeurvres and
+              the corresponding Tiny-Heli gesture sets can be easily added to
+              the game in a modular fashion. At present, the game supports the
+              following two sets of 3D-manoeuvres and the corresponding Tiny-Heli 2D-gestures:
+            </p>
+            
+            <p>
+              <font size="2" face="RobotoMono" />
+              Set: ABG
+            </p>
+            <table>
+              <tr>
+                <th>3D Heli Manoeuvre</th>
+                <th>2D Tiny Heli Gesture</th>
+              </tr>
+              <tr>
+                <td>PETALS</td>
+                <td>Alpha(α)</td>
+              </tr>
+              <tr>
+                <td>RAINBOW</td>
+                <td>Beta(β)</td>
+              </tr>
+              <tr>
+                <td>TORNADO</td>
+                <td>Gamma(γ)</td>
+              </tr>
+            </table>
+          <p>
+            <font size="2" face="RobotoMono" />
+            Set: CST
+          </p>
+          <table>
+            <tr>
+              <th>3D Heli Manoeuvre</th>
+              <th>2D Tiny Heli Gesture</th>
+            </tr>
+            <tr>
+              <td>GLOBE</td>
+              <td>Circle(◯)</td>
+            </tr>
+            <tr>
+              <td>FORTRESS</td>
+              <td>Square(▢)</td>
+            </tr>
+            <tr>
+              <td>TREE</td>
+              <td>Triangle(△)</td>
+            </tr>
+          </table>
+
+          <br />
             <h3>Game Play</h3>
             <p>
-              You will be presented with a 3D puzzle. A set of rings will be
+              When the game starts, you will be prompted to make a relevant 
+              (any from your chosen set)Tiny-Heli gesture. This will set up 
+              the game corresponding to your chosen manoeuvre and gesture set.
+              You will then be presented with a 3D puzzle. A set of rings will be
               suspended in the space above a helicopter field. You will have to
               figure out the helicopter manoeuvre that, once executed, will
               cover all the rings. Each 3D manoeuvre has a corresponding 2D tiny
@@ -185,37 +249,12 @@ limitations under the License.
               clear all levels, you become the "The Tiny Heli Master"! That is
               an honour!
             </p>
-            <br />
-            <h3>Game Manoeuvre and Gesture Set</h3>
-            <p>
-              The game has been designed in a manner that the manoeurvres and
-              the corresponding Tiny-Heli gesture sets can be easily added to
-              the game in a modular fashion. At present, the game supports the
-              following 3D-manoeuvres and the corresponding Tiny-Heli 2D-gestures:
-            </p>
-            <br />
-            <p>
-              <font size="2" face="RobotoMono" />
-            </p>
-            <table>
-              <tr>
-                <th>3D Heli Manoeuvre</th>
-                <th>2D Tiny Heli Gesture</th>
-              </tr>
-              <tr>
-                <td>GLOBE</td>
-                <td>Circle</td>
-              </tr>
-              <tr>
-                <td>FORTRESS</td>
-                <td>Square</td>
-              </tr>
-              <tr>
-                <td>TORNADO</td>
-                <td>Triangle</td>
-              </tr>
-            </table>
+
+
           </div>
+
+
+
 
           <div class="row instruction-gif-row">
             <!--

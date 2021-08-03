@@ -57,9 +57,13 @@ Change Log:
     function handleDocKeyDown(e) {
         const shapeMap = {
             o: "circle",
-            t: "triangle",
             s: "square",
+            t: "triangle",
+            a: "alpha",
+            b: "beta",
+            g: "gamma",
         };
+
         if (Object.keys(shapeMap).includes(e.key)) {
             soundManager.userInit();
             $lastInference = {
@@ -145,7 +149,7 @@ Change Log:
     </div>
     <!--  id="replayMessage" -->
     <div class="message message--info" bind:this={info}>
-        Game Status<span>s-t-a-r-t</span>
+        Make any valid Tiny-Heli gesture to setup the Show!<span>Setup Game</span>
     </div>
     <!--id="info" -->
 </div>
@@ -333,7 +337,7 @@ Change Log:
         left: 0;
         width: 100%;
         text-align: center;
-        text-transform: uppercase;
+        
         pointer-events: none;
     }
 
@@ -350,6 +354,7 @@ Change Log:
     .message--info {
         font-family: "Orbitron", sans-serif;
         font-size: 1.1em;
+        text-transform: uppercase;
         bottom: 6vh;
         letter-spacing: 0.2em;
         color: #68c3c0;

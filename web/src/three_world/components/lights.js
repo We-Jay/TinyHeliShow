@@ -17,7 +17,7 @@ function createLights2() {
     // Create a directional light
     const light = new DirectionalLight('white', 2);
     // move the light right, up, and towards us
-    light.position.set(50, 100, 100);
+    light.position.set(25, 50, 50);
     
 
     return light;

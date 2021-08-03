@@ -224,7 +224,7 @@ function setupManoeuvre(game, gameScene, gameSceneKeeper, curvePath) {
             heliCopter.rotation.set( 0, 0, 0 );
 
 
-            game.setState("move-over");
+            game.setState("MOVE-OVER");
         }
     };
 

@@ -20,7 +20,7 @@ function setLevel(level) {
     }
     levelCircle.setAttribute("stroke-dashoffset", d);
     */
-    console.log("setLevel", fieldLevel.innerHTML);
+   // console.log("setLevel", fieldLevel.innerHTML);
 
 }
 
@@ -37,21 +37,21 @@ function setupGUI(fLevel, fPoints, bMistakes, mReplay, iStatus) {
 
 function setPoints(points) {
     fieldPoints.innerHTML = points;
-    console.log("setPoints", fieldPoints.innerHTML);
+    //console.log("setPoints", fieldPoints.innerHTML);
 }
 
 function setMistakesBar(mistakes) {
     mistakesBar.style.right = (100 - (mistakes / 3) * 100) + "%";
     mistakesBar.style.backgroundColor = "#f25346"; // : "#68c3c0";
     //mistakesBar.style.animationName = "blinking";
-    console.log("setMistakes", mistakesBar.style.right);
+    //console.log("setMistakes", mistakesBar.style.right);
 
 }
 
 function setReplayMessage(userMessage) {
     replayMessage.innerHTML = userMessage;
     replayMessage.style.display = "block";
-    console.log("setReplayMessage", replayMessage.innerHTML);
+    //console.log("setReplayMessage", replayMessage.innerHTML);
 
 }
 function setStatusInfo(gameStatus) {
