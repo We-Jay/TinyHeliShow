@@ -156,7 +156,7 @@ scene.add(curveObject);
 }
 
 function start() {
-    game = new Game(loop);
+    game = new Game(loop, heliCopter, scene);
     loop.start(game);   
     //game.startGame(); //Start the game after first valide gesture
 }

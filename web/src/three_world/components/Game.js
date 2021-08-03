@@ -1,4 +1,4 @@
-import { scene, heliCopter } from "../world.js";
+//import { scene, heliCopter } from "../world.js";
 import { createHeliCopter, setupManoeuvre } from './helicopter.js';
 import { fetchCurvePath, fetchFullCurvePath } from './path.js';
 import { createRing, createRingsArray } from './ring.js';
@@ -15,9 +15,15 @@ const gestureMAP = {
     TORNADO: "γ",
 }
 
+let heliCopter;
+let scene;
+
 class Game {
 
-    constructor(loop) {
+    constructor(loop, worldHeli, worldScene) {
+        heliCopter = worldHeli;
+        scene = worldScene;
+
         this.level = 1;
         this.points = 0;
         this.attempt = 1;
