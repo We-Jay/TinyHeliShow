@@ -355,7 +355,7 @@ Change Log:
         font-family: "Orbitron", sans-serif;
         font-size: 1.1em;
         text-transform: uppercase;
-        bottom: 6vh;
+        bottom: 5.5vh;
         letter-spacing: 0.2em;
         color: #68c3c0;
     }
