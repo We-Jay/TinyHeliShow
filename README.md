@@ -18,7 +18,7 @@ A screenshot of the game interface is shown below: ![here:](/readme_images/TinyH
 
 Using an elastic band, tape, or a piece of velcro, attach the board to the top of a mock or minature helicopter model. Alternatively, you can use a wand-like stick (about 1-2ft long or strech you arm fully forward). We will call this contraption: 'Tiny-Heli'. Make sure that the LED is facing upwards and hold the USB cable in your hand, making sure the USB/board connector is towards your wrist.
 
-A Tiny-Heli can be easiy rigged up using a toy or a mock helicopter/airplane. Shown below is the Tiny-Heli setup that we are using.![Mock TinyML HeliCopter](/readme_images/mock-tinyml-copter.jpeg)
+A Tiny-Heli can be easiy rigged up using a toy or a mock helicopter/airplane. Shown below is the Tiny-Heli setup that we are using.![TinyML HeliCopter](/readme_images/TinyHeliSetup)
 
 
 ## Game Play
