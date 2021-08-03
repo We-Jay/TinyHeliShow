@@ -41,12 +41,17 @@ Set ABG:
 |  2 | RAINBOW   | Beta(β)   | 
 |  3 | TORNADO  | Gamma(γ) | |
 
+[ManoeuvreSet-PRT](/readme_images/Gestures-ABG.jpeg)
+
+
 Set CST:
 |   #   |  Heli Manoeuvre   | Tiny Heli Gesture*    |
 | :------------- | :----------: | -----------: |
 |  1 | GLOBE    | Circle(◯)   |
 |  2 | FORTRESS | Square(▢)  | 
 |  3 | TRΕΕ  | Triangle(△) | |
+
+[ManoeuvreSet-GFT](/readme_images/Gestures-CST.jpeg)
 
 At the start of the game application, you will be provided with the sketches that implement these gesture sets.
 You can download and load the desired gesture sets on to your Tiny-Heli boards.
