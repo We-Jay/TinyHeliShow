@@ -41,7 +41,7 @@ Set ABG:
 |  2 | RAINBOW   | Beta(β)   | 
 |  3 | TORNADO  | Gamma(γ) | |
 
-![ManoeuvreSet-PRT](/readme_images/Gestures-ABG.jpeg)
+![ManoeuvreSet-PRT](/readme_images/Gestures-ABG.jpg)
 
 
 Set CST:
