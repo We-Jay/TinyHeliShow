@@ -51,6 +51,9 @@ Set CST:
 At the start of the game application, you will be provided with the sketches that implement these gesture sets.
 You can download and load the desired gesture sets on to your Tiny-Heli boards.
 
+*At present, one of the Tiny-Heli gesture sets (set CST) is based on the Astrowand project set. So if you are using that set, you can also directly use the wand prepared for the Astrowand application without the need to download a sketch.
+
+
 ## Tips
 - **For accuracy** - Point the Tiny-Heli away from you and draw the shapes relatively quickly, and not too large. 
 - **For better mental visualization** - Adjust the orientation and zoom of the play area in the game to get the best view of the 3D rings for you. </p>
@@ -69,8 +72,6 @@ Other Tiny ML google experiments from which TinyHeliShow builds its understandin
 - [Tiny Motion Trainer](https://experiments.withgoogle.com/tiny-motion-trainer "Tiny Motion Trainer") lets you train and test IMU based TFLite models in the browser.
 - [Astrowand](https://experiments.withgoogle.com/astrowand "Astrowand") lets you draw shapes in the sky to form constellations.
 
-* At present, one of the Tiny-Heli gesture sets (set CST) is based on the Astrowand project set. So you are using that set, you can also directly use the wand prepared for the Astrowand application without the need to download a sketch.
-More or different Heli-Manoeuvres and Tiny-Heli gesture sets can be easily added to the game in a modular way. 
 
 ----
 
