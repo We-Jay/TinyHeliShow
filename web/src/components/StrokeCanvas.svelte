@@ -24,7 +24,7 @@
     var halfWidth = canvasWidth / 2;
 
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    ctx.strokeStyle = "#fff";
+    ctx.strokeStyle = "#13f4ef"; 
     ctx.beginPath();
     for (var i = 0; i < length; ++i) {
       if (i >= strokePoints.length) {
@@ -55,29 +55,43 @@
 <div class="strokeCanvas_bg" />
 <canvas id="strokeCanvas" bind:this={canvas} width="256" height="256" />
 
-<style lang="scss">
+<style> 
+
+:root {
+        /* Palette */
+        --black-color: #000000;
+        --blue-color: #13f4ef; 
+        --green-color: #86ff00; 
+        --red-color: #ff005c; 
+        --yellow-color: #ffe596;
+        --cream-color: #d1b790;
+  }
+
   .strokeCanvas_bg,
   #strokeCanvas {
     position: absolute;
-    right: 42px;
+    right: 84px;
     bottom: 42px;
     width: 128px;
     height: 128px;
-    border-radius: 50%;
+    border-radius: 20%;
   }
   .strokeCanvas_bg {
     z-index: 8;
     background-size: 7px 7px;
+    
     background-image: linear-gradient(
         to right,
-        rgba(0, 255, 0, 0.05) 1px,
+        #111153 1px,
         transparent 1px
       ),
-      linear-gradient(to bottom, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+      linear-gradient(to bottom,   #111153 1px, transparent 1px);
   }
+
   #strokeCanvas {
     z-index: 9;
-    border: 1px solid #fff;
+    border: 2px solid #ff005c ;
     background: radial-gradient(#00000000, #00000082);
   }
+
 </style>

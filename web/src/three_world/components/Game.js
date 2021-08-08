@@ -1,17 +1,19 @@
-//import { scene, heliCopter } from "../world.js";
+
 import { createHeliCopter, setupManoeuvre } from './helicopter.js';
 import { fetchCurvePath, fetchFullCurvePath } from './path.js';
 import { createRing, createRingsArray } from './ring.js';
 import { SceneKeeper } from '../systems/SceneKeeper.js';
-import { createCube } from "./cube.js";
 import * as GUI from "./gui.js";
+import { sounds } from "../../store.js";
+import * as SM from "../../soundManager.js";
+import { SmoothShading } from 'three';
 
 const gestureMAP = {
-    GLOBE: "◯", 
-    FORTRESS: "□", 
+    GLOBE: "◯",
+    FORTRESS: "▢",
     TREE: "△",
-    PETALS: "α", 
-    RAINBOW: "β", 
+    PETALS: "α",
+    RAINBOW: "β",
     TORNADO: "γ",
 }
 
@@ -33,16 +35,63 @@ class Game {
         this.puzzle = "UNKNOWN";
         this.currentMove = "USERSAYS";
         this.gestureSet = "GFT"
-        this.state = "STARTING"; //State tracking
-        //this.fsm = new FSM(loop);
+        this.state = "STARTING";
         this.loop = loop;
         this.sceneKeeper = new SceneKeeper();
-        this.replayMessage = " "; 
-        
+        this.replayMessage = " ";
+
     }
 
-    
+    setState(state) {
+        switch (state) {
+            case "STARTING":
+                this.state = "STARTING";
+                break;
+            case "WAITING-FOR-MOVE":
+                this.state = "WAITING-FOR-MOVE";
+                break;
+            case "MAKING-MOVE":
+                this.state = "MAKING-MOVE";
+                break;
+            case "MOVE-OVER":
+                this.state = "MOVE-OVER";
+                //startGame(); //Change to NextGameStep()
+                this.handlePostMove();
+                break;
+            case "GAME-OVER":
+                this.state = "GAME-OVER";
+                break;
+        }
+    }
 
+    getState(state) {
+        return this.state;
+    }
+
+    //Call it as soon as you decide on the puzzle type "GFT" or "PRT"
+    setPuzzleType(puzzleNo) {
+        if (this.gestureSet === "GFT") {
+            switch (puzzleNo) {
+                case 1: { this.puzzle = "GLOBE"; break; }
+                case 2: { this.puzzle = "FORTRESS"; break; }
+                case 3: { this.puzzle = "TREE"; break; }
+                default: console.log("Unknown GFT Move");
+            }
+
+        }
+        else if (this.gestureSet === "PRT") {
+            switch (puzzleNo) {
+                case 1: { this.puzzle = "PETALS"; break; }
+                case 2: { this.puzzle = "RAINBOW"; break; }
+                case 3: { this.puzzle = "TORNADO"; break; }
+                default: console.log("Unknown PRT Move");
+            }
+        }
+        else {
+            console.log("Setting Puzzle Type, Unknown Gesture Set!")
+        }
+        console.log("Set Puzzle:", this.puzzle);
+    }
 
     //Call this when there is a successful move
     updateScore() {
@@ -92,221 +141,36 @@ class Game {
         }
     }
 
-    //Call it as soon as you decide on the puzzle type
-    setPuzzleType(puzzleNo) {
-        if (this.gestureSet === "GFT") {
-            switch (puzzleNo) {
-                case 1: { this.puzzle = "GLOBE"; break; }
-                case 2: { this.puzzle = "FORTRESS"; break; }
-                case 3: { this.puzzle = "TREE"; break; }
-                default: console.log("Unknown GFT Move");
-            }
+    updateGUI() {
 
-        }
-        else if (this.gestureSet === "PRT") {
-            switch (puzzleNo) {
-                case 1: { this.puzzle = "PETALS"; break; }
-                case 2: { this.puzzle = "RAINBOW"; break; }
-                case 3: { this.puzzle = "TORNADO"; break; }
-                default: console.log("Unknown PRT Move");
-            }
-        }
-        else {
-            console.log("Setting Puzzle Type, Unknown Gesture Set!")
-        }
-        console.log("Set Puzzle:", this.puzzle);
-    }
+        GUI.setLevel(this.level);
+        GUI.setPoints(this.points);
+        GUI.setMistakesBar(this.mistakes);
+        GUI.setReplayMessage(this.replayMessage);
+        GUI.setStatusInfo(this.getState());
+        console.log("Updated GUI");
 
-    setState(state) {
-        switch (state) {
-            case "STARTING":
-                this.state = "STARTING";
-                break;
-            case "WAITING-FOR-MOVE":
-                this.state = "WAITING-FOR-MOVE";
-                break;
-            case "MAKING-MOVE":
-                this.state = "MAKING-MOVE";
-                break;
-            case "MOVE-OVER":
-                this.state = "MOVE-OVER";
-                //startGame(); //Change to NextGameStep()
-                this.handlePostMove();
-                break;
-            case "GAME-OVER":
-                this.state = "GAME-OVER";
-                break;
-        }
-    }
-
-    getState(state) {
-        return this.state;
-    }
-
-    handlePostMove() {
-        //Stop plane movement
-        this.loop.updatables.pop();
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-        //Clear the scene (No clearing if misktake)
-        //this.sceneKeeper.removeAll(scene);
-
-        //if successfull move
-        console.log("CurrentMove:", this.currentMove, ",CurrentPuzzle", this.puzzle);
-        if (this.currentMove == this.puzzle) {
-            this.updateScore();
-            this.updateLevel();
-            if (this.finished) {
-                this.replayMessage = "Congratulations! You Are Now A Tiny-Heli Master!";
-                this.setState("GAME-OVER");
-                // You can add a timeout here and then clear the scene
-                //Clear the scene
-                // sleep(10000).then(() => { console.log("World!"); });
-                //setTimeout(function(){}, 5000);
-                this.sceneKeeper.removeAll(scene);
-                this.updateGUI();
-                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
-            }
-            else {
-                if (this.levelChanged) {
-                    if (this.gestureSet === "GFT") {
-                        this.replayMessage = "Congrats! Try Next Level Puzzle: GLOBE ◯, FORTRESS □, TREE △";
-                    }
-                    else if (this.gestureSet === "PRT") {
-                        this.replayMessage = "Congrats! Try Next Level Puzzle: PETALS α, RAINBOW β, TORNADO γ";
-                    }
-                    
-                    // You can add a timeout here and then clear the scene
-                    //Clear the scene
-                    //sleep(10000).then(() => { console.log("World!"); });
-                    // setTimeout(function(){ }, 5000);
-                    this.sceneKeeper.removeAll(scene);
-                    this.updateGUI();
-
-                    console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
-                    this.levelChanged = false;
-                    this.setupPuzzle(this.level);
-                    this.setState("WAITING-FOR-MOVE");
-                    this.updateGUI();
-
-
-                } else {
-                    
-                    if (this.gestureSet === "GFT") {
-                        this.replayMessage = "Congrats! Try Next Puzzle: GLOBE ◯, FORTRESS □, TREE △";
-                    }
-                    else if (this.gestureSet === "PRT") {
-                        this.replayMessage = "Congrats! Try Next Puzzle: PETALS α, RAINBOW β, TORNADO  γ";
-                    }
-                    
-
-                    // You can add a timeout here and then clear the scene
-                    //Clear the scene
-                    //sleep(10000).then(() => { console.log("World!"); });
-                    // setTimeout(function(){ }, 5000);
-                    this.sceneKeeper.removeAll(scene);
-                    this.updateGUI();
-
-                    console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
-                    this.setupPuzzle(this.level);
-                    this.setState("WAITING-FOR-MOVE");
-                    this.updateGUI();
-                }
-
-            }
-
-        } else {
-            this.mistakes += 1;
-            if (this.mistakes > 3) {
-                this.replayMessage = "Sorry, Too Many Mistakes!";
-                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
-                this.setState("GAME-OVER")
-
-                // You can add a timeout here and then clear the scene
-                //Clear the scene
-                //sleep(10000).then(() => { console.log("World!"); });
-                //setTimeout(function(){}, 5000);
-                this.sceneKeeper.removeAll(scene);
-
-                this.updateGUI();
-            }
-            else {
-                if (this.gestureSet === "GFT") {
-                    this.replayMessage = "Sorry, Wrong Move: Try Again: GLOBE ◯, FORTRESS □, TREE △";
-                }
-                else if (this.gestureSet === "PRT") {
-                    this.replayMessage = "Sorry, Wrong Move! Try Again: PETALS α, RAINBOW β, TORNADO γ"
-
-                }
-
-                // You can add a timeout here and then clear the scene
-                //Clear the path in the scene
-                //sleep(10000).then(() => { console.log("World!"); });
-                //setTimeout(function(){ }, 5000);
-                //Only remove the previous path
-                this.sceneKeeper.removeLast(scene);
-
-                this.updateGUI();
-                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
-                // this.setupPuzzle(this.level);
-                this.setState("WAITING-FOR-MOVE", "Level-Score;", this.level, "-", this.points);
-                this.updateGUI();
-
-            }
-
-        }
-
-
-        //check move, success or failure
-        //if success: update score, update level, 
-
-    }
-
-
-    resetGame() {
-        this.level = 1;
-        this.points = 0;
-        this.attempt = 1;
-        this.mistakes = 0;
-        this.finished = false;
-        this.puzzle = "UNKNOWN";
-        this.state = "STARTING";
     }
 
     startGame() {
         //Initialize the Game variables
-        // resetGame();
         this.setupPuzzle(1);
         this.setState('WAITING-FOR-MOVE');
         if (this.gestureSet === "GFT") {
-            this.replayMessage = "Solve it by one Tiny-Heli Manoeuvre: GLOBE ◯, FORTRESS □, TREE △"
+            this.replayMessage = "Solve the Puzzle: GLOBE ◯, FORTRESS □, TREE △"
         }
-        else if (this.gestureSet === "PRT"){
-            this.replayMessage = "Solve it by one Tiny-Heli Manoeuvre: PETALS α, RAINBOW β, TORNADO γ"
+        else if (this.gestureSet === "PRT") {
+            this.replayMessage = "Solve the Puzzle: PETALS α, RAINBOW β, TORNADO γ"
         }
         this.updateGUI();
     }
 
-    startLevel(levelNo) {
-        this.setupPuzzle(levelNo);
-        this.setState('WAITING-FOR-MOVE');
+    resetGame() {
+        // Implement if functionality to reset the game is required
     }
 
-    stopGame() { }
-
-
-    moveGameForward() {
-
-        console.log("Moving Game Forward");
-        // loop.updatables.pop();
-        //temporarily using this code below 3 lines. To be changed very soon.
-        this.resetGame();
-        //setupPuzzle(0);
-        this.state = "WAITING-FOR-MOVE";
-
-
+    stopGame() {
+        //Implement if a stopGame rountine is required
     }
 
     //Set a random ring puzzle at a particular level depending upon gesture set
@@ -315,11 +179,6 @@ class Game {
         const pathType = Math.floor(Math.random() * 3) + 1; //Random number between 1 and 3
         this.setPuzzleType(pathType);
         let curvePath = fetchCurvePath(this.gestureSet, this.puzzle);
-        //let displayPath = fetchDisplayPath(pathType);
-
-        //(Optional) Display puzzle path
-        //scene.add(displayPath);
-        //this.sceneKeeper.add(displayPath);
 
         // Create an array of rings on the puzzle path 
         // (dependnig upon difficulty level)
@@ -346,111 +205,205 @@ class Game {
         // console.log("Puzzle set Game State: ", this.state);
     }
 
-    makeMoveGFT(shape) {
-        if (!(shape === "circle" || shape === "square" || shape === "triangle")){
-            console.log ("Invalid GFT Move!", shape)
-            return;
-        }     
+    //Once the Puzzle is set, and the player input is received make the move
+    makeMove(shape, sounds) {
 
+        if (this.gestureSet === "GFT") {
+            this.makeMoveGFT(shape, sounds);
+        }
+        else if (this.gestureSet === "PRT") {
+            this.makeMovePRT(shape, sounds);
+        }
+    }
+
+
+    //Move execution for Shapes Globe, Fortress and Tree
+    makeMoveGFT(shape, sounds) {
+        if (!(shape === "circle" || shape === "square" || shape === "triangle")) {
+            console.log("Invalid GFT Move!", shape)
+            return;
+        }
+
+        //Play specific Heli sound
+        SM.userInit();
+        SM.playSound(
+            sounds[shape].url,
+            127,
+            0.9
+        );
+
+        //Make specific manoeuvre
         this.setState("MAKING-MOVE");
         let curvePath;
         let displayPath;
         switch (shape) {
             case "circle":
                 curvePath = fetchFullCurvePath("GFT", "GLOBE");
-                //displayPath = fetchDisplayPath(1);
                 this.currentMove = "GLOBE"
                 console.log("GLOBE");
                 break;
             case "square":
                 curvePath = fetchFullCurvePath("GFT", "FORTRESS");
-                //displayPath = fetchDisplayPath(2);
                 this.currentMove = "FORTRESS";
                 console.log("FORTRESS");
                 break;
             case "triangle":
                 curvePath = fetchFullCurvePath("GFT", "TREE");
-                //displayPath = fetchDisplayPath(3);
                 this.currentMove = "TREE";
                 console.log("TREE");
                 break;
-                    
+
+        }
+
+        this.replayMessage = "Your Move:" + " " + this.currentMove + " " + gestureMAP[this.currentMove];
+        this.updateGUI();
+        //flytoMove
+        setupManoeuvre(this, scene, this.sceneKeeper, curvePath);
+
+        //execute manoeuvre with clock-tick
+        this.loop.updatables.push(heliCopter);
+    }
+
+    //Move execution for Shapes Petals, Rainbow, and Tornado
+    makeMovePRT(shape, sounds) {
+        if (!(shape === "alpha" || shape === "beta" || shape === "gamma")) {
+            console.log("Invalid PRT Move!")
+            return;
+        }
+
+        //Play specific Heli sound
+        SM.userInit();
+        SM.playSound(
+            sounds[shape].url,
+            127,
+            0.9
+        );
+
+        //Make manoeuvre
+        this.setState("MAKING-MOVE");
+        let curvePath;
+        let displayPath;
+        switch (shape) {
+
+            case "alpha":
+                curvePath = fetchFullCurvePath("PRT", "PETALS");
+                this.currentMove = "PETALS"
+                console.log("PETALS");
+                break;
+            case "beta":
+                curvePath = fetchFullCurvePath("PRT", "RAINBOW");
+                this.currentMove = "RAINBOW";
+                console.log("RAINBOW");
+                break;
+            case "gamma":
+                curvePath = fetchFullCurvePath("PRT", "TORNADO");
+                this.currentMove = "TORNADO";
+                console.log("TORNADO");
+                break;
         }
         // console.log("Reached upto monoeuvre");
         this.replayMessage = "Your Move:" + this.currentMove + " " + gestureMAP[this.currentMove];
         this.updateGUI();
         //flytoMove
         setupManoeuvre(this, scene, this.sceneKeeper, curvePath);
-        
+
         //execute manoeuvre with clock-tick
         this.loop.updatables.push(heliCopter);
     }
 
 
+    // Once a move is made by the player and it is executed, 
+    // handle the consequences and the next steps in Game
+    handlePostMove() {
+        //Stop plane movement
+        this.loop.updatables.pop();
 
-    makeMovePRT(shape){
-        if (!(shape === "alpha" || shape === "beta" || shape === "gamma")){
-            console.log ("Invalid PRT Move!")
-            return;
-        }   
+        //if successfull move
+        console.log("CurrentMove:", this.currentMove, ",CurrentPuzzle", this.puzzle);
+        if (this.currentMove == this.puzzle) {
+            this.updateScore();
+            this.updateLevel();
+            if (this.finished) {
+                this.replayMessage = "Congratulations! You Are Now A Tiny-Heli Master!";
+                this.setState("GAME-OVER");
 
-        this.setState("MAKING-MOVE");
-        let curvePath;
-        let displayPath;
-        switch (shape) {
-    
-            case "alpha":
-                curvePath = fetchFullCurvePath("PRT", "PETALS");
-                //displayPath = fetchDisplayPath(4);
-                this.currentMove = "PETALS"
-                console.log("PETALS");
-                break;
-            case "beta":
-                curvePath = fetchFullCurvePath("PRT", "RAINBOW");
-                //displayPath = fetchDisplayPath(5);
-                this.currentMove = "RAINBOW";
-                console.log("RAINBOW");
-                break;
-            case "gamma":
-                curvePath = fetchFullCurvePath("PRT", "TORNADO");
-                //displayPath = fetchDisplayPath(6);
-                this.currentMove = "TORNADO";
-                console.log("TORNADO");
-                break;
+                this.sceneKeeper.removeAll(scene);
+                this.updateGUI();
+                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
+            }
+            else {
+                if (this.levelChanged) {
+                    if (this.gestureSet === "GFT") {
+                        this.replayMessage = "Congrats! Try Next Level Puzzle: GLOBE ◯, FORTRESS ▢, TREE △";
+                    }
+                    else if (this.gestureSet === "PRT") {
+                        this.replayMessage = "Congrats! Try Next Level Puzzle: PETALS α, RAINBOW β, TORNADO γ";
+                    }
+
+                    this.sceneKeeper.removeAll(scene);
+                    this.updateGUI();
+
+                    console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
+                    this.levelChanged = false;
+                    this.setupPuzzle(this.level);
+                    this.setState("WAITING-FOR-MOVE");
+                    this.updateGUI();
+
+
+                } else {
+
+                    if (this.gestureSet === "GFT") {
+                        this.replayMessage = "Congrats! Try Next Puzzle: GLOBE ◯, FORTRESS ▢, TREE △";
+                    }
+                    else if (this.gestureSet === "PRT") {
+                        this.replayMessage = "Congrats! Try Next Puzzle: PETALS α, RAINBOW β, TORNADO  γ";
+                    }
+
+
+                    this.sceneKeeper.removeAll(scene);
+                    this.updateGUI();
+
+                    console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
+                    this.setupPuzzle(this.level);
+                    this.setState("WAITING-FOR-MOVE");
+                    this.updateGUI();
+                }
+
+            }
+
+        } else {
+            this.mistakes += 1;
+            if (this.mistakes > 3) {
+                this.replayMessage = "Sorry, Too Many Mistakes!";
+                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
+                this.setState("GAME-OVER")
+
+                this.sceneKeeper.removeAll(scene);
+
+                this.updateGUI();
+            }
+            else {
+                if (this.gestureSet === "GFT") {
+                    this.replayMessage = "Sorry, Wrong Move: Try Again: GLOBE ◯, FORTRESS ▢, TREE △";
+                }
+                else if (this.gestureSet === "PRT") {
+                    this.replayMessage = "Sorry, Wrong Move! Try Again: PETALS α, RAINBOW β, TORNADO γ"
+
+                }
+
+
+                this.sceneKeeper.removeLast(scene);
+
+                this.updateGUI();
+                console.log(this.replayMessage, "Level-Score;", this.level, "-", this.points);
+                this.setState("WAITING-FOR-MOVE", "Level-Score;", this.level, "-", this.points);
+                this.updateGUI();
+
+            }
+
         }
-        // console.log("Reached upto monoeuvre");
-        this.replayMessage = "Your Move:" + this.currentMove  + " " + gestureMAP[this.currentMove];
-        this.updateGUI();
-        //flytoMove
-        setupManoeuvre(this, scene, this.sceneKeeper, curvePath);
-        
-        //execute manoeuvre with clock-tick
-        this.loop.updatables.push(heliCopter);
-    }
-
-
-
-    makeMove(shape) {
-
-        if (this.gestureSet === "GFT") {
-            this.makeMoveGFT(shape);
-        }
-        else if (this.gestureSet === "PRT") {
-            this.makeMovePRT(shape);
-        }
-    }
-
-    updateGUI() {
-
-        GUI.setLevel(this.level);
-        GUI.setPoints(this.points);
-        GUI.setMistakesBar(this.mistakes);
-        GUI.setReplayMessage(this.replayMessage);
-        GUI.setStatusInfo(this.getState());
-        console.log("Updated GUI");
 
     }
-
 
 }
 

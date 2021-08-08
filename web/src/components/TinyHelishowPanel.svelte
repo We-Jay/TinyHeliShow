@@ -1,40 +1,24 @@
 <!--
-====================================================================
-Copyright 2021 Google LLC
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. 
-========================================================================
-
-@author Rikard Lindstrom <rlindstrom@google.com>
+=============================================================================
+Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
+=============================================================================
 @author Vikram Jamwal <vikram.jamwal@gmail.com>
-
-Change Log:
-
 -->
+
 <script>
     import { onMount } from "svelte";
     import { lastInference, sounds } from "../store";
-    import soundManager from "../soundManager";
     import world from "../three_world/world";
     import StrokeCanvas from "./StrokeCanvas.svelte";
 
-    let containerEl; //might not need this
-    let panelEl;
+    let worldPanelEl;
 
     let levelValue;
     let pointsValue;
     let mistakesBar;
     let replayMessage;
     let info;
+    let infohead;
 
     // Whenever the state changes, this reacts and the event for new 'stroke' will be handled
     $: if ($lastInference && $lastInference.label) {
@@ -43,14 +27,7 @@ Change Log:
 
     function handleInference() {
         if ($lastInference.score > 60) {
-            world.triggerShape($lastInference.label);
-            if ($sounds[$lastInference.label]) {
-                soundManager.playSound(
-                    $sounds[$lastInference.label].url,
-                    127,
-                    0.9
-                );
-            }
+            world.triggerShape($lastInference.label,$sounds);
         }
     }
 
@@ -65,7 +42,6 @@ Change Log:
         };
 
         if (Object.keys(shapeMap).includes(e.key)) {
-            soundManager.userInit();
             $lastInference = {
                 label: shapeMap[e.key],
                 score: 100,
@@ -76,7 +52,7 @@ Change Log:
     onMount(async () => {
         document.addEventListener("keydown", handleDocKeyDown, false);
         world.setupWorld(
-            panelEl,
+            worldPanelEl,
             levelValue,
             pointsValue,
             mistakesBar,
@@ -91,101 +67,57 @@ Change Log:
     });
 </script>
 
-<!--
-<div id="astrowandPanel" class="panel" bind:this={panelEl}>
-    <div class="container" bind:this={containerEl}>
-        <StrokeCanvas />
-    </div>
-</div>
--->
 
-<div class="game-holder" id="gameHolder">
+
+<div class="game-holder" id="gameHolder"> 
     <div class="header">
         <h1><span>JBMJ!</span>TinyHeliShow</h1>
         <h2>make your manoeuvre</h2>
-        <!--  -->
+
         <div class="score" id="score">
+          
             <div class="score__content" id="level">
-                <div class="score__label">level</div>
-                <div
-                    class="score__value score__value--level"
-                    bind:this={levelValue}
-                >
-                    <!--   id="levelValue"> -->
-                    1
-                </div>
-                
+                <div class="score__label">level </div>
+                <div class="score__value score__value--level"  bind:this={levelValue}> 1 </div>
             </div>
+             
             <div class="score__content" id="points">
-                <div class="score__label">points</div>
-                <div
-                    class="score__value score__value--points"
-                    bind:this={pointsValue}
-                >
-                    <!--  id="pointsValue"> -->
-                    000
-                </div>
+                <div class="score__label">points </div>
+                <div class="score__value score__value--points" bind:this={pointsValue}>0</div>
             </div>
-            <div class="score__content" id="mistakes">
-                <!-- </div>id="mistakes"> -->
-                <div class="score__label">Mistakes</div>
-                <div
-                    class="score__value score__value--mistakes"
-                    id="mistakesValue"
-                >
-                    <div class="mistakes-bar" bind:this={mistakesBar} />
-                    <!-- id="mistakesBar" /> -->
-                </div>
+
+            <div class="score__content" id="mistakes">          
+                <div class="score__label">Mistakes</div>          
+                <div class="score__value score__value--mistakes" id="mistakesValue">        
+                    <div class="mistakes-bar" bind:this={mistakesBar}> </div>         
+                </div>              
             </div>
+        
         </div>
+       
     </div>
 
-    <div class="world" bind:this={panelEl} />
-    <!--<div class="world" bind:this={panelEl} />-->
-    <!--id="world"-->
+    <div class="world" bind:this={worldPanelEl}> 
+        <StrokeCanvas/>
+    </div>
 
-    <div class="message message--replay" bind:this={replayMessage}>
-        Your Move
+    <div class="info-head" bind:this={infohead}>
+        Game Status
     </div>
-    <!--  id="replayMessage" -->
-    <div class="message message--info" bind:this={info}>
-        Make any valid Tiny-Heli gesture to setup the Show!<span>Setup Game</span>
+
+    <div class="info" bind:this={info}>
+        Setup
     </div>
-    <!--id="info" -->
+
+    <div class="message--replay" bind:this={replayMessage}> 
+       Make any valid Tiny-Heli gesture to setup the Show
+    </div>
+  
 </div>
 
-<!--
-<style lang="scss">
 
-    @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700&display=swap");
-
-    .panel {
-        background: linear-gradient(to top, #223647, #000a17);
-        // margin: 0;
-        //height:100%;
-        //width:100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        height: 100vh;
-        min-height: 800px;
-        max-width: 100%;
-
-        .container {
-            position: relative;
-            padding: 0;
-            // height: 100%;
-            // width: 100%;
-            // display: flex;
-            max-width: 100%;
-        }
-    }
-</style>
--->
 <style>
-
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
 
     * {
         margin: 0px;
@@ -259,7 +191,7 @@ Change Log:
         position: absolute; /* Mod: Added */
         top: 0vh; /* Mod: Added */
         width: 100%;
-        margin: 2em 0 0;
+        /*margin: 2em 0 0;*/
         right: 2em;
         text-align: right; /* Mod: Center to Right*/
         white-space: nowrap;
@@ -296,12 +228,12 @@ Change Log:
     }
 
     .score__value--level {
-        font-size: 2em;
+        font-size: 1.5em;
         text-align: center;
     }
 
     .score__value--points {
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .score__value--mistakes {
@@ -322,47 +254,54 @@ Change Log:
         left: 0;
         margin: 2px;
 
-        background-color: var(--red-color);
-        -webkit-animation-name: none;
-        animation-name: none;
-        -webkit-animation-duration: 150ms;
-        animation-duration: 150ms;
-        -webkit-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
+        background-color: var(--red-color);      
     }
 
-    .message {
-        font-weight: bold;
-        position: absolute;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        
-        pointer-events: none;
-    }
 
     .message--replay {
+        position: absolute;
+        left: 0;
+        bottom: 5vh; 
+        width: 100%;
+
         font-family: "Orbitron", sans-serif;
-        font-size: 1.25vw;
-        bottom: 8vh; /* Mod: 40 - 10 */
-        display: none;
-        text-indent: 0.5em;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
         letter-spacing: 0.2em;
-        color: var(--yellow-color);
+        color: var(--yellow-color);  
+        pointer-events: none;
+        display: block;     
     }
 
-    .message--info {
+    .info-head{      
+        position: absolute;
+        left: 0; 
+        bottom: 12vh;
+        width: 20%;
+
         font-family: "Orbitron", sans-serif;
-        font-size: 1.1em;
+        font-size: 1.5em;
         text-transform: uppercase;
-        bottom: 5.5vh;
+        letter-spacing: 0.2em; 
+        color: var(--red-color);
+        text-align: center;
+        pointer-events: none;      
+    }
+
+    .info {
+        position: absolute;
+        left: 0; 
+        bottom: 9vh;
+        width: 20%;
+        
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.2em;
+        text-transform: uppercase;
         letter-spacing: 0.2em;
         color: #68c3c0;
+        text-align: center;
+        pointer-events: none;   
     }
 
-    .message--info span {
-        display: block;
-        color: #d6483b;
-        white-space: nowrap;
-    }
 </style>

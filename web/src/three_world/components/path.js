@@ -1,4 +1,4 @@
-import * as THREE from 'three'; // '/node_modules/three/build/three.module.js';
+import * as THREE from 'three'; 
 import { Line2 } from 'three/examples/jsm/lines/Line2.js'
 import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js';
 import { LineGeometry } from 'three/examples/jsm/lines/LineGeometry.js';
@@ -56,26 +56,6 @@ function fetchCurvePath(setType, pathType) {
     }
 
 }
-
-/*
-function fetchCurvePathDirect(pathType) {
-    switch (pathType) {
-        case "GLOBE":
-            return curvePathSet.GLOBE;
-        case "FORTRESS":
-            return curvePathSet.FORTRESS;
-        case "TREE":
-            return curvePathSet.TREE;
-        case "PETALS":
-            return curvePathSet.PETALS;
-        case "RAINBOW":
-            return curvePathSet.RAINBOW;
-        case "TORNADO":
-            return curvePathSet.TORNADO;
-
-    }
-}
-*/
 
 
 
@@ -197,8 +177,6 @@ function fetchFullCurvePath(setType, pathType) {
     }
 }
 
-
-
 //Creates display path object for scene display
 function createDisplayPath(curvePath) {
 
@@ -219,10 +197,13 @@ function createPathPoints(curvePath) {
 
 
 function createPartialDisplayPath(pointsArray) {
+    
+    // Create using Standard Lines
     // const material = new THREE.LineBasicMaterial({ color: 0x9132a8 });
     // const geometry = new THREE.BufferGeometry().setFromPoints(pointsArray);
     // return new THREE.Line(geometry, material);
 
+    //Create using Fat Lines
     let positions = [];
     for (let i = 0, l = pointsArray.length; i < l; i++) {
         positions.push(pointsArray[i].x, pointsArray[i].y, pointsArray[i].z);
@@ -241,45 +222,9 @@ function createPartialDisplayPath(pointsArray) {
     // line
     let fatLine = new Line2(geometry, material);
 
-    return fatLine;
-
-    /*
-    
-        geometry.setColors( colors );
-    
-        let matLine = new LineMaterial( {
-    
-            color: 0xffff00 ,
-            linewidth: 15, // in pixels
-            vertexColors: true,
-            //resolution:  // to be set by renderer, eventually
-            dashed: false,
-            alphaToCoverage: true,
-    
-        } );
-    
-        matLine.uniforms.opacity.value = 0.5 
-    
-        let fatLine = new Line2(geometry, matLine);
-        
-        fatLine.computeLineDistances();
-        fatLine.scale.set( 1, 1, 1 );
-        return fatLine;
-        
-        */
-
-    /*
-    const line = new THREEMESH.MeshLine();
-    line.THREEMESH.setVertices(pointsArray);
-    const material = new THREEMESH.MeshLineMaterial();
-    const mesh = new THREE.Mesh(line, material);
-    return mesh;
-    */
+    return fatLine; 
 
 }
-
-
-
 
 
 //Helper function: gives sample points from the points Path
@@ -326,143 +271,5 @@ function createSelectPointsArray(curvePath, noOfPoints) {
 
 }
 
-
-
 export { fetchCurvePath, fetchFullCurvePath, createDisplayPath, createPartialDisplayPath, createPathPoints};
 
-/*
-
-//New add
-function createFractionDisplayPath(fraction, curvePath) {
-
-
-    const material = new THREE.LineBasicMaterial({ color: 0x7FFFD4 });
-    const points = curvePath.curves.reduce((p, d) => [...p, ...d.getPoints(20)], []);
-    const upperIndex = Math.floor(points.length * fraction);
-    console.log( "UpperIndex Point:", points[upperIndex]);
-
-
-    const pointsSection = points.slice(0, upperIndex);
-
-    const geometry = new THREE.BufferGeometry().setFromPoints(pointsSection);
-    //console.log("Full Points",points);
-    return new THREE.Line(geometry, material);
-
-}
-
-*/
-
-
-
-
-
-//call this during World Setup
-/*
-function createAllPaths() {
-    curvePathType.CIRCLE = createCurvePath1();
-    curvePathType.SQUARE = createCurvePath2();
-    curvePathType.TRIANGLE = createCurvePath3();
-
-    displayPathType.CIRCLE = createDisplayPath(curvePathType.CIRCLE);
-    displayPathType.SQUARE = createDisplayPath(curvePathType.SQUARE);
-    displayPathType.TRIANGLE = createDisplayPath(curvePathType.TRIANGLE);
-}
-*/
-
-/*
-function createCurvePath1() {
-
-    const curvePath = new THREE.CurvePath();
-    const firstLine = new THREE.LineCurve3(
-        new THREE.Vector3(7, 0, 0),
-        new THREE.Vector3(-7, 0, 0)
-    );
-    const secondLine = new THREE.LineCurve3(
-        new THREE.Vector3(-7, 0, 0),
-        new THREE.Vector3(-7, 7, 0)
-    );
-
-    const thirdLine = new THREE.LineCurve3(
-        new THREE.Vector3(-7, 7, 0),
-        new THREE.Vector3(-7, 7, 7),
-    );
-
-
-    const bezierLine = new THREE.CubicBezierCurve3(
-        new THREE.Vector3(-7, 7, 7),
-        new THREE.Vector3(-3.5, 10.5, 0),
-        new THREE.Vector3(14.0, 10.5, 0),
-        new THREE.Vector3(-7, 0, 7)
-    );
-
-    curvePath.add(firstLine);
-    curvePath.add(secondLine);
-    curvePath.add(thirdLine);
-    curvePath.add(bezierLine);
-
-    return curvePath;
-}
-*/
-
-/*
-function createCurvePath2() {
-
-    const curvePath = new THREE.CurvePath();
-    const firstLine = new THREE.LineCurve3(
-        new THREE.Vector3(-.67, 4.31, -.82),
-        new THREE.Vector3(-4.92, 3.28, -.95),
-
-    );
-    const secondLine = new THREE.LineCurve3(
-        new THREE.Vector3(-4.92, 3.28, -.95),
-        new THREE.Vector3(-6.52, -2.05, 1.53),
-
-    );
-
-    const bezierLine = new THREE.CubicBezierCurve3(
-        new THREE.Vector3(-6.52, -2.05, 1.53),
-        new THREE.Vector3(-.74, 3.44, 6.23),
-        new THREE.Vector3(-6.20, .93, 2.34),
-    );
-
-    curvePath.add(firstLine);
-    curvePath.add(secondLine);
-    curvePath.add(bezierLine);
-
-    return curvePath;
-}
-
-*/
-
-/*
-function createCurvePath3() {
-
-    const curvePath = new THREE.CurvePath();
-
-    const firstCurveLine = new THREE.QuadraticBezierCurve3(
-        new THREE.Vector3(-1, 0, .12),
-        new THREE.Vector3(3.70, 1.57, .67),
-        new THREE.Vector3(-4.25, 2.82, 1.75),
-    );
-
-
-    const secondCurveLine = new THREE.QuadraticBezierCurve3(
-        new THREE.Vector3(-4.25, 2.82, 1.75),
-        new THREE.Vector3(-6.45, -2.88, 3.15),
-        new THREE.Vector3(2.23, -1.70, 2.14),
-    );
-
-    const cubicBezierLine = new THREE.CubicBezierCurve3(
-        new THREE.Vector3(2.23, -1.70, 2.14),
-        new THREE.Vector3(4.31, -1.79, -1.95),
-        new THREE.Vector3(-3.07, 5.32, 18.86),
-        new THREE.Vector3(-1, 0, .12),
-    );
-
-    curvePath.add(firstCurveLine);
-    curvePath.add(secondCurveLine);
-    curvePath.add(cubicBezierLine);
-
-    return curvePath;
-}
-*/

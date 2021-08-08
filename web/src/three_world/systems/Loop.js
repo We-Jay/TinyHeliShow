@@ -1,4 +1,4 @@
-import { Clock } from 'three'; // '/node_modules/three/build/three.module.js';
+import { Clock } from 'three'; 
 import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
 import {updateControls} from "./controls";
 
@@ -16,11 +16,9 @@ class Loop {
         // only call the getDelta function once per frame!
         const delta = clock.getDelta();
 
-        // console.log(
-        //     `The last frame rendered in ${delta * 1000} milliseconds`,
-        // );
+        // console.log( `The last frame rendered in ${delta * 1000} milliseconds`);
         
-        //NewAdd
+        //Camera rotation controller
         updateControls();
 
         // All world objects that need updation are listed in the "updatables"
@@ -36,13 +34,7 @@ class Loop {
 
             // Do the actions in the world
             this.tick();
-
-            // Print the present state of game
-
-            // var para = document.getElementById("info");
-            // para.innerHTML = "Game Status: " + game.getState();
             
-
             // render a frame
             this.renderer.render(this.scene, this.camera);
 

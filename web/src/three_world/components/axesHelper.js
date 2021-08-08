@@ -1,4 +1,4 @@
-import { AxesHelper } from 'three'; //'/node_modules/three/build/three.module.js';
+import { AxesHelper } from 'three'; 
 
 function createAxesHelper(){
    

@@ -14,7 +14,9 @@ limitations under the License.
 ========================================================================*/
 
 /**
-* @autor Rikard Lindstrom <rlindstrom@google.com>
+* @author Rikard Lindstrom <rlindstrom@google.com>
+* @author Vikram Jamwal <vikram.jamwal@gmail.com>
+* Change Log: Sounds added
 */
 
 import { get, readable, writable } from "svelte/store";

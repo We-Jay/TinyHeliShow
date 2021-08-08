@@ -1,4 +1,4 @@
-import { PerspectiveCamera } from 'three';//'/node_modules/three/build/three.module.js';
+import { PerspectiveCamera } from 'three';
 
 function createCamera() {
     const camera = new PerspectiveCamera(
@@ -9,7 +9,7 @@ function createCamera() {
     );
 
     // move the camera back so we can view the scene
-    camera.position.set(0, 20, 20);
+    camera.position.set(0, 15, 25);
 
     return camera;
 }

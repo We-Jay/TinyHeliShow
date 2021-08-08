@@ -1,12 +1,11 @@
 import { createCamera } from './components/camera.js';
-import { createCube, createMarkerCubes } from './components/cube.js';
+import { createMarkerDrums } from './components/drum.js';
 import { createLights, createLights2 } from './components/lights.js';
 import { createScene } from './components/scene.js';
 import { Game } from './components/Game.js';
 import { fetchCurvePath, createDisplayPath } from './components/path.js';
 import { createHeliCopter, setupManoeuvre } from './components/helicopter.js';
 import { createPlatformRing, createRing, createRingsArray } from './components/ring.js';
-import { SceneKeeper } from './systems/SceneKeeper.js';
 import { createAxesHelper } from './components/axesHelper.js';
 import { createGridHelper } from './components/GridHelper.js';
 import { createControls } from './systems/controls.js';
@@ -20,28 +19,24 @@ import { setupGUI } from './components/gui.js';
 // These variables are module-scoped: we cannot access them
 // from outside the module
 
-// THREEJS RELATED VARIABLES
+// THREEJS related variables
 let camera;
 let renderer;
-let scene = createScene();
+let scene; 
 let loop;
 let resizer;
-let sceneKeeper;
-
 
 // GAME VARIABLES
 let game;
 let heliCopter;
 
-
 function setupWorld(container, fLevel, fPoints, bMistakes, mReplay, iStatus) {
 
+    scene = createScene();
     camera = createCamera();
-    //scene = createScene();
     renderer = createRenderer();
-
     container.append(renderer.domElement);
-    //NewAdd
+
     setupGUI(fLevel, fPoints, bMistakes, mReplay, iStatus);
 
     resizer = new Resizer(container, camera, renderer);
@@ -51,7 +46,7 @@ function setupWorld(container, fLevel, fPoints, bMistakes, mReplay, iStatus) {
     //Initial scene settings
     const controls = createControls(camera, renderer.domElement);
     const axesHelper = createAxesHelper();
-    const gridHelper = createGridHelper();
+    //const gridHelper = createGridHelper();
     const light = createLights();
     const light2 = createLights2();
 
@@ -60,9 +55,11 @@ function setupWorld(container, fLevel, fPoints, bMistakes, mReplay, iStatus) {
     scene.add(light);
     scene.add(light2);
 
-    //Experimental add
+    //Platform - Round base + Perimeter Ring + direction markers
+    //2D
     const geometry = new THREE.CircleGeometry(10.4, 32);
     /*
+    //3D
     const geometry = new THREE.CylinderGeometry(10.4, 10.4, .2, 32);
     const texture = new THREE.TextureLoader().load('grass.jpg');
     const material = new THREE.MeshBasicMaterial({
@@ -71,9 +68,10 @@ function setupWorld(container, fLevel, fPoints, bMistakes, mReplay, iStatus) {
         side: THREE.DoubleSide,
     });
     */
-
     const material = new THREE.MeshBasicMaterial({ color: 0x040414, side: THREE.DoubleSide });
+    //const material = new THREE.MeshBasicMaterial({ color:  0x111153, side: THREE.DoubleSide });
 
+   
     const platformPlane = new THREE.Mesh(geometry, material);
     platformPlane.translateY(-.2);
     platformPlane.rotateX(Math.PI / 2);
@@ -83,86 +81,31 @@ function setupWorld(container, fLevel, fPoints, bMistakes, mReplay, iStatus) {
     const platformRing = createPlatformRing();
     scene.add(platformRing);
 
-    const directionCubes = createMarkerCubes();
-    for (let i = 0, l = directionCubes.length; i < l; i++) {
-        scene.add(directionCubes[i]);
-        //console.log("Added", i);
+    const directionDrums = createMarkerDrums();
+    for (let i = 0, l = directionDrums.length; i < l; i++) {
+        scene.add(directionDrums[i]);
     }
 
-
-
-    /*
+    /* Quick aid to display and debug paths
     let displayPath = createDisplayPath(fetchCurvePath("GFT", "TREE"));
     scene.add(displayPath);
-
-
-    //Create a closed wavey loop
-const curve = new THREE.CatmullRomCurve3( [
-	new THREE.Vector3( -10, 0, 10 ),
-	new THREE.Vector3( -5, 5, 5 ),
-	new THREE.Vector3( 0, 0, 0 ),
-	new THREE.Vector3( 5, -5, 5 ),
-	new THREE.Vector3( 10, 0, 10 )
-] );
-
-const pointsC = curve.getPoints( 50 );
-const geometryC = new THREE.BufferGeometry().setFromPoints( pointsC );
-
-const materialC = new THREE.LineBasicMaterial( { color : 0xff0000 } );
-
-// Create the final object to add to the scene
-const curveObject = new THREE.Line( geometryC, materialC );
-
-scene.add(curveObject);
-
-*/
-
-    /*
-    //temp add
-    const loader = new THREE.FontLoader();
-
-    loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
-
-        const geometry = new THREE.TextGeometry( 'Hello Heli Master!', {
-            font: font,
-            size: 80,
-            height: 5,
-            curveSegments: 12,
-            bevelEnabled: true,
-            bevelThickness: 10,
-            bevelSize: 8,
-            bevelOffset: 0,
-            bevelSegments: 5
-        } );
-        geometry.center();
-        var material = new THREE.MeshNormalMaterial();
-        var mesh = new THREE.Mesh( geometry, material );
-        scene.add(mesh);
-    } );
-
     */
 
 
-
-
-
-
-    //Game elements (Resuable)
-    // createAllPaths();
+    //Game elements (Permanent)
     heliCopter = createHeliCopter(loop);
     scene.add(heliCopter);
-    //scene.add(fetchDisplayPath(1));
+   
 
 }
 
 function start() {
     game = new Game(loop, heliCopter, scene);
     loop.start(game);   
-    //game.startGame(); //Start the game after first valide gesture
 }
 
 // Handles the player move
-function triggerShape(shape) {
+function triggerShape(shape, sounds) {
 
     console.log("Waiting for right trigger");
 
@@ -189,7 +132,7 @@ function triggerShape(shape) {
         return;
     }
     //When 'waiting-for-move', process player move
-    game.makeMove(shape);
+    game.makeMove(shape, sounds);
 }
 
 

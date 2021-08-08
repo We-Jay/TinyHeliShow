@@ -17,36 +17,17 @@ function createRing() {
     const tubularSegments = 48;
     const ringGeometry = new TorusGeometry(radius, tubeRadius, radialSegments, tubularSegments);
     
-
-    // a physically correct "standard" material
-    // const material = new MeshStandardMaterial({ color: Math.random() * 0xffffff });
     const material = new MeshPhongMaterial({ color: Math.random() * 0xffffff });
     // If flat shading is false, then ring appears smoother
-    //material.flatShading = true;
+    // material.flatShading = true;
     // create a Mesh containing the geometry and material
     const ring = new Mesh(ringGeometry, material);
     ring.castShadow = true;
     ring.receiveShadow = true;
 
-    // console.log(ringGeometry.parameters);
-
-
-    //ring.translateX (-1);
-    //ring.translateY (1.2);
-    //ring.translateZ (.3);
-
-    // ring.position.x = Math.random() * 10 - 4;
-    // ring.position.y = Math.random() * 10 - 4;
-    // ring.position.z = Math.random() * 10 - 4;
-
-    // ring.rotateY(-Math.PI/2);
-    // ring.rotation.set(-0.5, -0.1, 0.8);
-    // ring.rotation.set(Math.random() * -1, Math.random() * -1 , Math.random() * 1);
-
     const radiansPerSecond = MathUtils.degToRad(30);
 
-    // this method will be called once per frame
-
+    // this method will be called once per frame [Not used]
     ring.tick = (delta) => {
         // increase the ring's rotation each frame
         ring.rotation.z += radiansPerSecond * delta;
@@ -67,7 +48,7 @@ function createPlatformRing(){
     const tubularSegments = 120;
     const ringGeometry = new TorusGeometry(radius, tubeRadius, radialSegments, tubularSegments);
     
-    const material = new MeshPhongMaterial({ color:  0xedff0ff });
+    const material = new MeshPhongMaterial({ color:  0xdff0ff });
     const ring = new Mesh(ringGeometry, material);
     ring.castShadow = true;
     ring.receiveShadow = true;
@@ -117,23 +98,18 @@ function createRingsArray(curvePath, noOfPoints) {
 
     for (let i = 0; i < ringPositions.length; i++) {
         const ring = createRing();
-        
 
         let index = ringPositions[i];
         const newPosition = curvePoints[index];
         //console.log("Curve Point at", ringPositions[i], ":" ,curvePoints[ringPositions[i]]);
         ring.position.copy(newPosition);
-        //ring.position.set(curvePoints[index].x, curvePoints[index].y, curvePoints[index].z);
-      
-        //ring.position.set(curvePoints[index].x, 4, -4 );
+
         const tangent = curvePath.getTangent(index / curvePoints.length);
 
         axis.crossVectors(up, tangent).normalize();
         const radians = Math.acos(up.dot(tangent));
         ring.quaternion.setFromAxisAngle(axis, radians);
         ring.rotateY(-Math.PI/2);
-
-
 
         ringsArray.push(ring);
         // console.log("Create Ring:", i, curvePoints[ringPositions[i]]);
@@ -189,26 +165,6 @@ function createHeliRing() {
     const radialSegments = 14;
     const tubularSegments = 48;
     const ringGeometry = new TorusGeometry(radius, tubeRadius, radialSegments, tubularSegments);
-    
-
-    
-    //const material = new MeshPhongMaterial({ color: Math.random() * 0xffffff });
-    
-    //These methods won't work because ring is not initialized.
-
-    //ring.translateX (-1);
-    //ring.translateY (1.2);
-    //ring.translateZ (.3);
-
-    // ring.position.x = Math.random() * 10 - 4;
-    // ring.position.y = Math.random() * 10 - 4;
-    // ring.position.z = Math.random() * 10 - 4;
-
-    // ring.rotateX(-Math.PI/2);
-    // ring.rotation.set(-0.5, -0.1, 0.8);
-    // ring.rotation.set(Math.random() * -1, Math.random() * -1 , Math.random() * 1);
-
-    
 
     return ringGeometry;
 

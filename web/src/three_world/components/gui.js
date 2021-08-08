@@ -1,27 +1,15 @@
-//GUI
+//Game GUI Updation Module
 
-let fieldLevel; // = document.getElementById("levelValue");
-let levelCircle; // = document.getElementById("levelCircleStroke");
-let fieldPoints; // = document.getElementById("pointsValue");
-let mistakesBar; // = document.getElementById("mistakesBar");
+let fieldLevel; 
+let levelCircle; 
+let fieldPoints; 
+let mistakesBar; 
 
-let replayMessage;// = document.getElementById("replayMessage");
-let statusInfo; //    = document.getElementById("info");
+let replayMessage;
+let statusInfo; 
 
 function setLevel(level) {
     fieldLevel.innerHTML = level;
-
-    /*
-    let d;
-    switch (level) {
-        case 1: { (points <= 225) ? d = 502 * (1 - points / 225) : d = 0; break; }
-        case 2: { (points <= 450) ? d = 502 * (1 - points / 450) : d = 0; break; }
-        case 3: { (points <= 700) ? d = 502 * (1 - points / 700) : d = 0; break; }
-    }
-    levelCircle.setAttribute("stroke-dashoffset", d);
-    */
-   // console.log("setLevel", fieldLevel.innerHTML);
-
 }
 
 //NewAdd
@@ -42,8 +30,7 @@ function setPoints(points) {
 
 function setMistakesBar(mistakes) {
     mistakesBar.style.right = (100 - (mistakes / 3) * 100) + "%";
-    mistakesBar.style.backgroundColor = "#f25346"; // : "#68c3c0";
-    //mistakesBar.style.animationName = "blinking";
+    mistakesBar.style.backgroundColor = "#f25346"; 
     //console.log("setMistakes", mistakesBar.style.right);
 
 }
@@ -55,11 +42,12 @@ function setReplayMessage(userMessage) {
 
 }
 function setStatusInfo(gameStatus) {
-    statusInfo.innerHTML = "Game Status: " + gameStatus;
+    //statusInfo.innerHTML = "Game Status: " + gameStatus;
+    statusInfo.innerHTML = gameStatus;
     console.log("setStatusInfo", statusInfo.innerHTML);
 }
 
-//NewAdd
+
 export { setupGUI, setLevel, setPoints, setMistakesBar, setReplayMessage, setStatusInfo };
 
 

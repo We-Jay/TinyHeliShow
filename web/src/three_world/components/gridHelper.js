@@ -1,4 +1,4 @@
-import { GridHelper } from 'three'; //'/node_modules/three/build/three.module.js';
+import { GridHelper } from 'three'; 
 
 function createGridHelper(){
    

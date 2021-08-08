@@ -3,13 +3,13 @@
 ![theme](/readme_images/tiny-heli-show-theme.jpeg)
 ## Overview
 **TinyHeliShow** 
-is a novel 3D puzzle game. On every game play, it presents the players with a unique configuration of rings suspended in a 3D space. It then prompts the players to figure out a tiny helicopter manoeuvre that will solve the puzzle. The game is inspired from the RC Helicopter shows organized in different parts of the world. It adds an interesting element of puzzle solving to make it even more fun. 
+is a novel 3D puzzle game. On every game play, it presents the players with a unique configuration of rings suspended in a 3D space. It then prompts the players to figure out a tiny helicopter manoeuvre that will solve the puzzle. The game is inspired from the RC Helicopter shows organized in different parts of the world. It adds an interesting element of puzzle solving to make it even more fun experience. 
 
-TinyHeliShow is engaging on its own, but in a simple manner it also demonstrates:
-- how TinyML can be incorporated into the games to create interactive fun experiences, and
-- how multiple sets of gestures and game elements can be added to the game to create different game scenarios and challenges.
+While TinyHeliShow is an engaging game on its own, it also demonstrates:
+- how TinyML can be incorporated into games to create interactive fun experiences, and
+- how multiple sets of ML based gesture controls and game elements can be modularly added to games to create varied game scenarios and challenges.
 
-A screenshot of the game interface is shown below: ![here:](/readme_images/TinyHeliShow.png)
+A screenshot of the game interface is shown below: ![here:](/readme_images/TinyHeliShow-screen.png)
 
 ----
 
