@@ -19,6 +19,9 @@ const gestureMAP = {
 
 let heliCopter;
 let scene;
+//for performance testing
+let startMoveTime;
+let endMoveTime;
 
 class Game {
 
@@ -52,9 +55,13 @@ class Game {
                 break;
             case "MAKING-MOVE":
                 this.state = "MAKING-MOVE";
+                startMoveTime = performance.now();
                 break;
             case "MOVE-OVER":
                 this.state = "MOVE-OVER";
+                endMoveTime = performance.now()
+                console.log(this.currentMove, "| Time Taken:", endMoveTime - startMoveTime);
+
                 //startGame(); //Change to NextGameStep()
                 this.handlePostMove();
                 break;
@@ -304,9 +311,8 @@ class Game {
         // console.log("Reached upto monoeuvre");
         this.replayMessage = "Your Move:" + this.currentMove + " " + gestureMAP[this.currentMove];
         this.updateGUI();
-        //flytoMove
+       
         setupManoeuvre(this, scene, this.sceneKeeper, curvePath);
-
         //execute manoeuvre with clock-tick
         this.loop.updatables.push(heliCopter);
     }
