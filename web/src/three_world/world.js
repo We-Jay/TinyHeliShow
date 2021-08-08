@@ -132,6 +132,7 @@ function triggerShape(shape, sounds) {
         return;
     }
     //When 'waiting-for-move', process player move
+    
     game.makeMove(shape, sounds);
 }
 
