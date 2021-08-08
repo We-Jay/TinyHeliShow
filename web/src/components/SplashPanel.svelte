@@ -115,7 +115,7 @@ limitations under the License.
 
           <p>
             Download and unzip this <a
-              href="./tinyhelishow-arduino-sketch-v002.zip"
+              href="./tinyhelishow-arduino-sketch-v001.zip"
               target="_blank">sketch file</a
             >.
           </p>
