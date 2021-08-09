@@ -150,8 +150,8 @@ limitations under the License.
 
           <h4>Connect via Bluetooth</h4>
           <p>
-            Click the "connect" button below, then select "TinyHeliShow-ABG" (or "TinyHeliShow-CSt") from
-            the dialogue box.
+            Click the "connect" button below, then select "TinyHeliShow-ABG" (or "TinyHeliShow-CST" 
+            / or both if you have two TinyML controllers ) from the dialogue box.
           </p>
         </div>
         <div class="row">
