@@ -143,7 +143,7 @@ limitations under the License.
           <p>
             If you need more help getting started with your Arduino and sketch,
             visit the <a
-              href="https://github.com/googlecreativelab/astrowand/blob/main/README.md"
+              href="https://github.com/We-Jay/TinyHeliShow/blob/master/README.md"
               target="_blank">Getting Started Guide.</a
             >
           </p>
