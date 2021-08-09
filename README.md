@@ -63,8 +63,10 @@ You can download and load the desired gesture sets on to your Tiny-Heli boards.
 - **For accuracy** - Point the Tiny-Heli away from you and draw the shapes relatively quickly, and not too large. 
 - **For better mental visualization** - Adjust the orientation and zoom of the play area in the game to get the best view of the 3D rings for you. </p>
 
-## Demo
-A deployed version of the TinyHeliShow Game is also available for the demonstration purpose here: [TinyHeliShow Live](https://logical-seat-322406.el.r.appspot.com "TinyHeliShow Demo"). Please note that, as of now, it has only been tested on a Bluetooth enabled Google Chrome browser running on a Macbook with a 4K Display. 
+## Live Demo
+A pre-deployed version of the TinyHeliShow Game is also available for the demonstration here: [TinyHeliShow Live](https://logical-seat-322406.el.r.appspot.com "TinyHeliShow Demo"). 
+
+Please note that: (1) As of now, the Game App has only been tested on a bluetooth enabled Google Chrome browser running on a Macbook with a 4K Display with 16:9 aspect ratio. So, different screen resolutions and aspect ratios might affect the placement of interface elements in an unintended manner. (2) This web-hosting is only for the purpose of demonstration and testing and is only available for a limited duration.
 
 ## Experiment description
  *TinyHeliShow* project is built with:
