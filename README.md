@@ -63,6 +63,9 @@ You can download and load the desired gesture sets on to your Tiny-Heli boards.
 - **For accuracy** - Point the Tiny-Heli away from you and draw the shapes relatively quickly, and not too large. 
 - **For better mental visualization** - Adjust the orientation and zoom of the play area in the game to get the best view of the 3D rings for you. </p>
 
+## Demo
+A deployed version of the TinyHeliShow Game is also available for the demonstration purpose here: [TinyHeliShow Live](https://logical-seat-322406.el.r.appspot.com "TinyHeliShow Demo"). Please note that, as of now, it has only been tested on a Bluetooth enabled Google Chrome browser running on a Macbook with a 4K Display. 
+
 ## Experiment description
  *TinyHeliShow* project is built with:
 - [THREEJS](https://threejs.org/ "three") and standard web technologies (HTML, CSS & Javascript) 
