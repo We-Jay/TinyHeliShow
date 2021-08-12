@@ -6,6 +6,7 @@ let controls;
 function createControls(camera, canvas) {
     controls = new OrbitControls(camera, canvas);
     controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.2;
     return controls;
 }
 

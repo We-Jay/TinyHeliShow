@@ -101,6 +101,7 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
         <StrokeCanvas/>
     </div>
 
+
     <div class="info-head" bind:this={infohead}>
         Game Status
     </div>
@@ -127,10 +128,10 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
     :root {
         /* Palette */
         --black-color: #000000;
-        --blue-color: #13f4ef; /*#13F4EF*/
-        --green-color: #86ff00; /*#86FF00;*/
-        --red-color: #ff005c; /*#FF005C*/
-        --yellow-color: #ffe596; /*FFBF00 */
+        --blue-color: #13f4ef; 
+        --green-color: #86ff00; 
+        --red-color: #ff005c; 
+        --yellow-color: #ffe596;
         --cream-color: #d1b790;
     }
 
@@ -150,72 +151,73 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
 
     .header {
         position: absolute;
-        top: 2vh; /* Mod: 8 to 2 */
-        left: 2em;
+        top: 4vh;
+        left: 2vw; 
         width: 100%;
-        text-align: left; /* Mod: center to left */
+        text-align: left; 
         pointer-events: none;
-        z-index: 1; /* Mod:Added */
+        z-index: 1;
     }
 
     .header h1 {
         font-family: "Orbitron", sans-serif;
-        font-size: 4.5em;
+        font-size: 4.4vw; 
         line-height: 1;
         margin: 0;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.025vh;
         color: var(--yellow-color);
     }
 
+    
     .header h1 span {
-        font-size: 0.2em;
+        font-size: 0.2vw;
         font-style: italic;
         display: block;
-        margin: 0 0 -1.5em -7em;
-        letter-spacing: 0px;
+        margin: 0 0 -1.5vw -7vw;
+        letter-spacing: 0;
     }
+    
 
     .header h2 {
         font-family: "Orbitron", sans-serif;
-        font-size: 1em;
-        margin: 0em 0;
+        font-size: 1vw; 
+        margin: 0;
         white-space: nowrap;
-        text-indent: 1.4em;
-        letter-spacing: 1em;
+        text-indent: 1.2vw; 
+        letter-spacing: 1vw ;
         text-transform: uppercase;
         color: var(--red-color);
     }
 
     .score {
         font-family: "Orbitron", sans-serif;
-        position: absolute; /* Mod: Added */
-        top: 0vh; /* Mod: Added */
+        position: absolute; 
+        top: 0; 
         width: 100%;
-        /*margin: 2em 0 0;*/
-        right: 2em;
-        text-align: right; /* Mod: Center to Right*/
+        right: 2vw; 
+        text-align: right; 
         white-space: nowrap;
     }
 
     .score__content {
         position: relative;
         display: inline-block;
-        padding: 1em;
+        padding: 1vw; 
         vertical-align: top;
     }
 
     .score__content:nth-child(2) {
-        border-right: 1px solid var(--yellow-color);
-        border-left: 1px solid var(--yellow-color);
+        border-right: .4vw  solid var(--yellow-color);
+        border-left:  .4vw   solid var(--yellow-color);
     }
 
     .score__label {
         font-family: "Orbitron", sans-serif;
         position: relative;
-        font-size: 1.5em;
-        margin: 0 0 0.5em 0;
+        font-size: 1.5vw; 
+        margin: 0 0 0.5vw  0;
         text-align: center;
-        letter-spacing: 3px;
+        letter-spacing: .2vw;
         text-transform: uppercase;
         color: var(--red-color);
     }
@@ -228,21 +230,21 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
     }
 
     .score__value--level {
-        font-size: 1.5em;
+        font-size: 1.5vw; 
         text-align: center;
     }
 
     .score__value--points {
-        font-size: 1.5em;
+        font-size: 1.5vw; 
     }
 
     .score__value--mistakes {
         position: relative;
         text-align: center;
-        width: 120px;
-        height: 10px;
-        margin-top: 20px;
-        border-radius: 6px;
+        width: 10vw; 
+        height: 1vw; 
+        margin-top: 1vw; 
+        border-radius: .3vw; 
         background-color: var(--yellow-color);
     }
 
@@ -252,7 +254,7 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
         right: 0;
         bottom: 0;
         left: 0;
-        margin: 2px;
+        margin: .4vh; 
 
         background-color: var(--red-color);      
     }
@@ -265,10 +267,10 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
         width: 100%;
 
         font-family: "Orbitron", sans-serif;
-        font-size: 1.5em;
+        font-size: 1.5vw;
         font-weight: bold;
         text-align: center;
-        letter-spacing: 0.2em;
+        letter-spacing: .2vw; 
         color: var(--yellow-color);  
         pointer-events: none;
         display: block;     
@@ -281,9 +283,9 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
         width: 20%;
 
         font-family: "Orbitron", sans-serif;
-        font-size: 1.5em;
+        font-size: 1.5vw;
         text-transform: uppercase;
-        letter-spacing: 0.2em; 
+        letter-spacing: 0.2vw; 
         color: var(--red-color);
         text-align: center;
         pointer-events: none;      
@@ -296,9 +298,9 @@ Purpose: Creates the Tiny Heli-Show Interface and connects to the Game World
         width: 20%;
         
         font-family: "Orbitron", sans-serif;
-        font-size: 1.2em;
+        font-size: 1.2vw;
         text-transform: uppercase;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.2vw; 
         color: #68c3c0;
         text-align: center;
         pointer-events: none;   

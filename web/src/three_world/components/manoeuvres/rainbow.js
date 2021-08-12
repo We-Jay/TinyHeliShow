@@ -80,11 +80,11 @@ function createCurvePathRainbow() {
 
     const connectCurve3 = new THREE.LineCurve3(
         new THREE.Vector3(.5, 2, -8),
-        new THREE.Vector3(.5, 2, -8),
+        new THREE.Vector3(-.5, 2, -8),
     );
 
     const thirdC3CurveLine = new THREE.QuadraticBezierCurve3(
-        new THREE.Vector3(.5, 2, -8),
+        new THREE.Vector3(-.5, 2, -8),
         new THREE.Vector3(-.5, 6, -8),
         new THREE.Vector3(-.5, 6, -4),
     );

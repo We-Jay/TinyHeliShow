@@ -53,7 +53,9 @@
 </script>
 
 <div class="strokeCanvas_bg" />
-<canvas id="strokeCanvas" bind:this={canvas} width="256" height="256" />
+<canvas id="strokeCanvas" bind:this={canvas} /> 
+
+<!--width="256" height="256" /> -->
 
 <style> 
 
@@ -70,27 +72,27 @@
   .strokeCanvas_bg,
   #strokeCanvas {
     position: absolute;
-    right: 84px;
-    bottom: 42px;
-    width: 128px;
-    height: 128px;
+    right: 8.4vw; 
+    bottom: 4.2vw;
+    width: 6.4vw; 
+    height: 6.4vw;
     border-radius: 20%;
   }
   .strokeCanvas_bg {
     z-index: 8;
-    background-size: 7px 7px;
+    background-size: .35vw .35vw; 
     
     background-image: linear-gradient(
         to right,
-        #111153 1px,
-        transparent 1px
+        #111153 .1vw, 
+        transparent 0.1vw, 
       ),
-      linear-gradient(to bottom,   #111153 1px, transparent 1px);
+      linear-gradient(to bottom,   #111153 0.1vw, transparent 0.1vw);
   }
 
   #strokeCanvas {
     z-index: 9;
-    border: 2px solid #ff005c ;
+    border: .1vw solid #ff005c ;
     background: radial-gradient(#00000000, #00000082);
   }
 
